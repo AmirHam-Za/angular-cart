@@ -1,0 +1,17 @@
+<p>customer-cart works!</p>
+<h1>Cart</h1>
+<!-- {{cartService.getItems() | json}} -->
+@for(item of cartService.getItems(); track item.productId) {
+    <div class="bg-red-200 border rounded">
+        <h1>{{item.productName}}</h1>
+        <h1>Id: {{item.productId}}</h1>
+        <h1>Price: {{item.productPrice}}</h1>
+        <p>Quantity: {{item.quantity}}</p>
+        <div class="flex gap-2">
+        <button class="bg-red-400 px-2 rounded" (click)="deleteCart(item)">Delete</button>
+        <button class="bg-blue-400 px-2 rounded" (click)="cartService.incrementQuantity(item.productId)">+</button>
+        <button class="bg-blue-400 px-2 rounded" (click)="cartService.decrementQuantity(item.productId)">-</button>
+        </div>
+    </div>
+}
+<h1>Total: {{cartService.getTotal()}}</h1>

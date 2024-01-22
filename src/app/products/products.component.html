@@ -1,0 +1,14 @@
+<div class="mx-auto">
+	<div class="w-full flex bg-green-100 ">
+		<div *ngFor="let todo of todoList" class="w-2/12 p-2 bg-green-300">
+			<div  class="w-full bg-red-200 p-1 border-4 border-blue-500 rounded flex justify-center">
+				<div class="">
+					<img *ngIf="todo.Image" [src]="todo.Image" alt="Todo Image" class="w-full h-48 object-cover">
+					<p class="w-full text-center">{{ todo.Title }}</p>
+					<p class="w-full text-center">${{ todo.Price }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
