@@ -39,15 +39,19 @@ export class ProductComponent implements OnInit {
   }
   getProducts(){
     this.productSrv.getProducts().subscribe((res:any)=>{
-      this.productsList = res.data
+      // this.productsList = res.data
+      // console.log('getProducts-->', this.productsList)
+
+      this.productsList = res.products
+      console.log('getProducts-->', this.productsList)
     })
-    console.log('======', this.productsList)
   }
   getAllCategory(){
     this.productSrv.getCategory().subscribe((res:any)=>{
-      this.categoryList = res.data
+      // this.categoryList = res.data
+      this.categoryList = res
+      console.log('======>', this.categoryList)
     })
-    console.log('======>', this.categoryList)
   }
   onSave(){
     this.productSrv.saveProduct(this.productObj).subscribe((res:any)=>{
@@ -75,7 +79,8 @@ export class ProductComponent implements OnInit {
   onDelete(item: any){
     const isDelete = confirm('Are you sure to delete?')
     if (isDelete){
-      this.productSrv.deleteProduct(item.productId).subscribe((res:any)=>{
+      // this.productSrv.deleteProduct(item.productId).subscribe((res:any)=>{
+      this.productSrv.deleteProduct(item.id).subscribe((res:any)=>{
         if(res.result){
           alert('Deleted Successfully')
           this.getProducts()

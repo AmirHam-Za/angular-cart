@@ -4,3 +4,9 @@
     <app-nav></app-nav>
   <app-crud></app-crud> -->
 </router-outlet>
+<div class="fixed text-center px-2 h-20 top-1/2 right-4 backdrop-blur-sm bg-white/30rounded-lg shadow-1-strong shadow-gray-400">
+  <!-- <p class="p-2 text-lg font-semibold">Items: {{ item }}</p>
+  <p class="p-2 text-lg font-semibold">Total: {{ itemCount }}</p> -->
+  <p class="p-2 text-lg font-semibold"><i class="fa-regular fa-money-bill-1"></i> {{cartService.getTotal()}}</p>
+  <p class="p-2 text-lg font-semibold"><i class="fa-solid fa-bag-shopping"></i>  {{cartService.getTotalItems()}}</p>
+</div>

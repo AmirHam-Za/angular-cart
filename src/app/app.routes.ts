@@ -9,6 +9,7 @@ import { CategoriesComponent } from './pages/admin/categories/categories.compone
 import { LandingComponent } from './pages/website/landing/landing.component';
 import { CategoryProductsComponent } from './pages/website/category-products/category-products.component';
 import { WebProductsComponent } from './pages/website/web-products/web-products.component';
+import { CustomerCartComponent } from './pages/website/customer-cart/customer-cart.component';
 
 
 export const routes: Routes = [
@@ -45,6 +46,10 @@ export const routes: Routes = [
     {
         path:'login',
         component:LoginComponent
+    },
+    {
+        path:'cart',
+        component:CustomerCartComponent
     },
     // {
     //     path:'products/:id',

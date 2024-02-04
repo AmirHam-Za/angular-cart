@@ -16,7 +16,11 @@ export class CategoriesComponent {
   constructor(private productSrv:ProductService){
     this.products$ = this.productSrv.getCategory().pipe(
       map((item:any)=>{
-        return item.data
+        // console.log(item.data)
+        // return item.data
+
+        console.log('category-list--->', item)
+        return item
       })
     )
   }

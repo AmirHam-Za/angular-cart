@@ -10,11 +10,18 @@
           <div *ngFor="let product of productsList" class="w-3/12">
           <div class=" ">
 
+
+            
+
               <div class="bg-blue-100 p-1 m-1 border rounded shadow">
                 <img class="w-full" [src]="product.productImageUrl" alt="">
-                <h1 class="text-xl font-semibold">{{product.productName}}</h1>
-                <h1 class="text-xl font-semibold">{{product.productPrice}}</h1>
-                <h1 class="text-xl font-semibold">{{product.categoryName}}</h1>
+                <img src="{{product.thumbnail}}" alt="">
+                <h1 class="text-xl font-semibold">{{product.id}}</h1>
+                <h1 class="text-xl font-semibold">{{product.title}}</h1>
+                <h1 class="text-xl font-semibold">{{product.price}}</h1>
+                <h1 class="text-xl font-semibold">{{product.description}}</h1>
+                <h1 class="text-xl font-semibold">{{product.brand}}</h1>
+                <h1 class="text-xl font-semibold">{{product.category}}</h1>
                 <div class="flex justify-start gap-2">
                   <a (click)="onEdit(product)" class="bg-blue-400 p-1 rounded cursor-pointer">Edit</a>
                   <a (click)="onDelete(product)" class="bg-red-400 p-1 rounded cursor-pointer">Delete</a>

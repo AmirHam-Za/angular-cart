@@ -14,12 +14,13 @@ import { CommonModule } from '@angular/common';
 export class CategoryProductsComponent {
   activeCategoryId: number = 0;
   products: any [] =[]
-  cartService: any;
+  // cartService: any;
 
   constructor(private activatedRoute: ActivatedRoute, private prodSrv:ProductService){
     this.activatedRoute.params.subscribe((res:any)=>{
       // debugger;
       this.activeCategoryId = res.id
+      console.log('HELLOOOOOOO',this.activeCategoryId)
       this.loadProducts()
     })
   }
