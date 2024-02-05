@@ -12,6 +12,7 @@ import {
   initTE,
 } from "tw-elements";
 import { WebheaderComponent } from '../webheader/webheader.component';
+import { NavComponent } from "../../../nav/nav.component";
 
 initTE({ Dropdown, Ripple });
 // initTE({ Datepicker, Input }, { allowReinits: true });
@@ -19,11 +20,11 @@ initTE({ Dropdown, Ripple });
 // initTE({ Dropdown, Ripple }, { allowReinits: true });
 
 @Component({
-  selector: 'app-landing',
-  standalone: true,
-  imports: [CommonModule, RouterLink, WebheaderComponent, RouterOutlet ],
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css'
+    selector: 'app-landing',
+    standalone: true,
+    templateUrl: './landing.component.html',
+    styleUrl: './landing.component.css',
+    imports: [CommonModule, RouterLink, WebheaderComponent, RouterOutlet, NavComponent]
 })
 export class LandingComponent {
   productsList:any [] = []

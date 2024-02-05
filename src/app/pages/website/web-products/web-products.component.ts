@@ -51,16 +51,6 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
     console.log('bbbbbbbbbbb>>>',this.item)
   }
 
-
-  
-  
-
-
-
-
-
-
-  
   nevigateToProducts(id:number){
     this.router.navigate(['/products', id])
   }
@@ -88,17 +78,13 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
     this.cartService.addCart(product)
     console.log('========>cart clicked')
   }
-
   // addToCart() {
   //   this.cartService.addCart(this.product);
   // }
 
-
-
-
-
   // In WebProductsComponent
-incrementQuantity(productId: number) {
+
+  incrementQuantity(productId: number) {
   this.cartService.incrementQuantity(productId);
 }
 

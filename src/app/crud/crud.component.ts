@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Todo } from './../model';
+
 import { FormsModule } from '@angular/forms';
 import { OnInit  } from '@angular/core';
+import { Crud } from '../model';
 
 
 @Component({
@@ -14,11 +15,11 @@ import { OnInit  } from '@angular/core';
   styleUrl: './crud.component.css'
 })
 export class CrudComponent implements OnInit {
-  todoList: Todo[] = [];
-  todo: Todo = this.initodo;
+  crudList: Crud[] = [];
+  crud: Crud = this.inicrud;
   searchTerm: string = '';
 
-  get initodo(): Todo {
+  get inicrud(): Crud {
     return {
       Title: '',
       Id: null,
@@ -28,44 +29,44 @@ export class CrudComponent implements OnInit {
   }
 
   ngOnInit() {
-    const savedTodos = localStorage.getItem('todos');
-    if (savedTodos) {
-      this.todoList = JSON.parse(savedTodos);
+    const savedCrud = localStorage.getItem('cruds');
+    if (savedCrud) {
+      this.crudList = JSON.parse(savedCrud);
     }
   }
 
-  addTodo(): void {
-    if (this.todo.Id) {
-      this.todoList = this.todoList.map(o => {
-        if (o.Id === this.todo.Id) {
-          return { ...this.todo };
+  addCrud(): void {
+    if (this.crud.Id) {
+      this.crudList = this.crudList.map(o => {
+        if (o.Id === this.crud.Id) {
+          return { ...this.crud };
         }
         return o;
       });
     } else {
-      this.todo.Id = Date.now();
-      this.todoList.push({ ...this.todo });
+      this.crud.Id = Date.now();
+      this.crudList.push({ ...this.crud });
     }
-    localStorage.setItem('todos', JSON.stringify(this.todoList));
-    this.todo = this.initodo;
+    localStorage.setItem('cruds', JSON.stringify(this.crudList));
+    this.crud = this.inicrud;
   }
 
-  editTodo(todo: Todo): void {
-    this.todo = { ...todo };
+  editCrud(crud: Crud): void {
+    this.crud = { ...crud };
   }
 
-  // delTodo(id: number): void {
-  //   this.todoList = this.todoList.filter(o => o.Id !== id);
-  //   localStorage.setItem('todos', JSON.stringify(this.todoList));
+  // delcrud(id: number): void {
+  //   this.crudList = this.crudList.filter(o => o.Id !== id);
+  //   localStorage.setItem('cruds', JSON.stringify(this.crudList));
   // }
-  delTodo(id: number): void {
+  delCrud(id: number): void {
     // Display a confirmation dialog
-    const isConfirmed = window.confirm('Are you sure you want to delete this todo?');
+    const isConfirmed = window.confirm('Are you sure you want to delete this Item?');
   
     // Proceed with deletion only if the user confirms
     if (isConfirmed) {
-      this.todoList = this.todoList.filter(o => o.Id !== id);
-      localStorage.setItem('todos', JSON.stringify(this.todoList));
+      this.crudList = this.crudList.filter(o => o.Id !== id);
+      localStorage.setItem('cruds', JSON.stringify(this.crudList));
     }
   }
   
@@ -75,7 +76,7 @@ export class CrudComponent implements OnInit {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.todo.Image = e.target.result;
+        this.crud.Image = e.target.result;
       };
       reader.readAsDataURL(file);
     }

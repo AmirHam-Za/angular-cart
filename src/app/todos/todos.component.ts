@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
+import { Todo } from '../model';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Todo } from './../model';
+
 import { FormsModule } from '@angular/forms';
 import { OnInit  } from '@angular/core';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-todos',
   standalone: true,
   imports: [CommonModule, RouterOutlet, FormsModule],
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  templateUrl: './todos.component.html',
+  styleUrl: './todos.component.css'
 })
-export class ProductsComponent implements OnInit {
+export class TodosComponent {
   todoList: Todo[] = [];
   todo: Todo = this.initodo;
   searchTerm: string = '';
@@ -22,18 +23,17 @@ export class ProductsComponent implements OnInit {
       Title: '',
       Id: null,
       Price:'',
-      Image: ''
+      // Image: ''
     };
   }
-
-  ngOnInit() {
+  ngOnInit(): void {
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
       this.todoList = JSON.parse(savedTodos);
-    }
-  }
+    } 
+   }
 
-  addTodo(): void {
+   addTodo(): void {
     if (this.todo.Id) {
       this.todoList = this.todoList.map(o => {
         if (o.Id === this.todo.Id) {
@@ -59,7 +59,7 @@ export class ProductsComponent implements OnInit {
   // }
   delTodo(id: number): void {
     // Display a confirmation dialog
-    const isConfirmed = window.confirm('Are you sure you want to delete this todo?');
+    const isConfirmed = window.confirm('Are you sure you want to delete this Item?');
   
     // Proceed with deletion only if the user confirms
     if (isConfirmed) {
@@ -74,10 +74,9 @@ export class ProductsComponent implements OnInit {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.todo.Image = e.target.result;
+        // this.todo.Image = e.target.result;
       };
       reader.readAsDataURL(file);
     }
   }
-
 }
