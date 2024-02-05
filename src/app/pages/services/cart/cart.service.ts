@@ -79,17 +79,41 @@ export class CartService {
       console.log()
     }
   }
-  getTotal(){
-    return this.items.reduce((acc, item) => {
-      // return acc + item.productPrice * item.quantity
-      return acc + item.price * item.quantity
-    }, 0)
-    }
-  getTotalItems() : number{
-    return this.items.reduce((acc, item) => {
-      return acc + item.quantity * 1
-    }, 0)
-    }
+  // getTotal(){
+  //   return this.items.reduce((acc, item) => {
+  //     // return acc + item.productPrice * item.quantity
+  //     return acc + item.price * item.quantity
+  //   }, 0)
+  //   }
+
+  getTotal() {
+    const total = this.items.reduce((acc, item) => {
+      return acc + item.price * item.quantity;
+    }, 0);
+  
+    // Store the total in localStorage
+    localStorage.setItem('cartTotal', JSON.stringify(total));
+  
+    return total;
+  }
+  
+  // getTotalItems() : number{
+  //   return this.items.reduce((acc, item) => {
+  //     return acc + item.quantity * 1
+  //   }, 0)
+  //   }
+  getTotalItems(): number {
+    const totalItems = this.items.reduce((acc, item) => {
+      return acc + item.quantity;
+    }, 0);
+  
+    // Store the total items in localStorage
+    localStorage.setItem('cartTotalItems', JSON.stringify(totalItems));
+  
+    return totalItems;
+  }
+  
+
 
 // In CartService
 getTotalPriceForAllItems(): number {

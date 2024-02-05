@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Todo } from './model';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
 import { CrudComponent } from './crud/crud.component';
 import { NavComponent } from './nav/nav.component';
 import { LandingComponent } from './pages/website/landing/landing.component';
@@ -20,7 +19,6 @@ import { CartService } from './pages/services/cart/cart.service';
     CommonModule, 
     RouterOutlet,
     FormsModule, 
-    HomeComponent, 
     CrudComponent, 
     NavComponent, 
     LandingComponent, 

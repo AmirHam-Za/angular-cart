@@ -15,7 +15,8 @@ export class CategoriesComponent {
   products$:Observable<any>
   constructor(private productSrv:ProductService){
     this.products$ = this.productSrv.getCategory().pipe(
-      map((item:any)=>{
+      map((item:any)=>
+     {
         // console.log(item.data)
         // return item.data
 

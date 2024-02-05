@@ -67,17 +67,17 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
   getAllProducts(){
     this.productSrv.getProducts().subscribe((res:any)=>{
       // this.productsList = res.data
-      // console.log('-->', this.productsList)
-
+      
       this.productsList = res.products
+      console.log('-->', this.productsList)
       console.log('getProducts-->', this.productsList)
     })
     
   }
     getAllCategory(){
     this.productSrv.getCategory().subscribe((res:any)=>{
-      this.categoryList = res.data
-      console.log('==>',this.productsList)
+      this.categoryList = res
+      console.log('getAllCategory==>',this.categoryList)
     })
     
   }
