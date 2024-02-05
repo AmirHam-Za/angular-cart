@@ -13,7 +13,6 @@ export class ProductService {
     // return this.http.get('https://dummyjson.com/products/categories')
     // return this.http.get('https://api.freeapi.app/api/v1/ecommerce/categories')
     // console.log('getCategories>>>>',)
-    
   }
   getProducts(){
     return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_ALL_PRODUCT)

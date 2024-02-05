@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 
-// import { BehaviorSubject } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   // private items:any[] =[]
-  private items:any[] = JSON.parse(localStorage.getItem('cartItems') || '[]')
-  private totaltems:any[] = JSON.parse(localStorage.getItem('cartItems') || '[]')
-
+  private items: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]')
+  private totaltems: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]')
 
   // private cartItemsSubject = new BehaviorSubject<any[]>([]);
   // cartItems$ = this.cartItemsSubject.asObservable();
@@ -22,11 +19,10 @@ export class CartService {
   //   localStorage.setItem('cartItems', JSON.stringify(this.items))
   // }
 
-
   addCart(product: any) {
     const existingItem = this.items.find(item => item.id === product.id);
-    
-    
+
+
     // const currentCartItems = this.cartItemsSubject.value;
     // this.cartItemsSubject.next([...currentCartItems, { ...product, quantity: 1 }]);
 
@@ -37,11 +33,11 @@ export class CartService {
       // If it's a new product, add it to the cart with quantity 1
       this.items.push({ ...product, quantity: 1 });
     }
-  
+
     // Save the updated cart to local storage
     localStorage.setItem('cartItems', JSON.stringify(this.items));
   }
-  getItems(){
+  getItems() {
     return this.items
   }
   // delete(item: any){
@@ -57,23 +53,23 @@ export class CartService {
 
 
   totalPricePerItem(product: any): number {
-  const cartItem = this.items.find(item => item.id === product.id);
-  // return cartItem ? cartItem.price * cartItem.quantity : 0;
-  return  cartItem.price * cartItem.quantity;
+    const cartItem = this.items.find(item => item.id === product.id);
+    // return cartItem ? cartItem.price * cartItem.quantity : 0;
+    return cartItem.price * cartItem.quantity;
 
   }
-  incrementQuantity(id:number){
+  incrementQuantity(id: number) {
     // let item = this.items.find((i) => i.productId === id)
     let item = this.items.find((i) => i.id === id)
-      if(item){
+    if (item) {
       item.quantity++
       localStorage.setItem('cartItems', JSON.stringify(this.items))
     }
   }
-  decrementQuantity(id:number){
+  decrementQuantity(id: number) {
     // let item = this.items.find((i) => i.productId === id)
     let item = this.items.find((i) => i.id === id)
-      if(item){
+    if (item) {
       item.quantity--
       localStorage.setItem('cartItems', JSON.stringify(this.items))
       console.log()
@@ -90,13 +86,13 @@ export class CartService {
     const total = this.items.reduce((acc, item) => {
       return acc + item.price * item.quantity;
     }, 0);
-  
+
     // Store the total in localStorage
     localStorage.setItem('cartTotal', JSON.stringify(total));
-  
+
     return total;
   }
-  
+
   // getTotalItems() : number{
   //   return this.items.reduce((acc, item) => {
   //     return acc + item.quantity * 1
@@ -106,45 +102,38 @@ export class CartService {
     const totalItems = this.items.reduce((acc, item) => {
       return acc + item.quantity;
     }, 0);
-  
+
     // Store the total items in localStorage
     localStorage.setItem('cartTotalItems', JSON.stringify(totalItems));
-  
+
     return totalItems;
   }
-  
-
-
-// In CartService
-getTotalPriceForAllItems(): number {
-  return this.items.reduce((acc, item) => {
-    return acc + item.price * item.quantity;
-  }, 0);
-}
 
 
 
-
-    // In CartService
-isProductInCart(product: any): boolean {
-  return this.items.some(item => item.id === product.id);
-}
-
-getQuantityInCart(product: any): number {
-  const cartItem = this.items.find(item => item.id === product.id);
-  return cartItem ? cartItem.quantity : 0;
-}
-
-getTotalPriceForProduct(product: any): number {
-  const cartItem = this.items.find(item => item.id === product.id);
-  return cartItem ? cartItem.price * cartItem.quantity : 0;
-}
-
-
-
+  // In CartService
+  getTotalPriceForAllItems(): number {
+    return this.items.reduce((acc, item) => {
+      return acc + item.price * item.quantity;
+    }, 0);
   }
 
-  
+  // In CartService
+  isProductInCart(product: any): boolean {
+    return this.items.some(item => item.id === product.id);
+  }
+
+  getQuantityInCart(product: any): number {
+    const cartItem = this.items.find(item => item.id === product.id);
+    return cartItem ? cartItem.quantity : 0;
+  }
+
+  getTotalPriceForProduct(product: any): number {
+    const cartItem = this.items.find(item => item.id === product.id);
+    return cartItem ? cartItem.price * cartItem.quantity : 0;
+  }
+
+}
 
 
 
@@ -160,6 +149,8 @@ getTotalPriceForProduct(product: any): number {
 
 
 
-  
+
+
+
 
 
