@@ -47,8 +47,16 @@ export class LandingComponent {
   }
   getAllCategory(){
     this.productSrv.getCategory().subscribe((res:any)=>{
-      this.categoryList = res.data
-      console.log(this.productsList)
+      this.categoryList = res
+      console.log('getAllCategory>>>>>',this.categoryList)
+    })
+    
+  }
+
+  getProductsOfCategory(){
+    this.productSrv.getCategory().subscribe((res:any)=>{
+      this.categoryList = res
+      console.log('>>>>>',this.categoryList)
     })
     
   }

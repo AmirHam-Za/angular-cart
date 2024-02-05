@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { CrudComponent } from './crud/crud.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './pages/admin/login/login.component';
@@ -10,6 +9,7 @@ import { LandingComponent } from './pages/website/landing/landing.component';
 import { CategoryProductsComponent } from './pages/website/category-products/category-products.component';
 import { WebProductsComponent } from './pages/website/web-products/web-products.component';
 import { CustomerCartComponent } from './pages/website/customer-cart/customer-cart.component';
+import { AuthGuard } from './pages/services/auth/auth.guard';
 
 
 export const routes: Routes = [
@@ -18,10 +18,7 @@ export const routes: Routes = [
         redirectTo:'shop',
         pathMatch:'full'
     },
-    {
-        path:'home',
-        component:HomeComponent
-    },
+   
     {
         // path:'shop',
         // component:LandingComponent
@@ -44,12 +41,18 @@ export const routes: Routes = [
         component:CrudComponent
     },
     {
+        path:'categoryProduct',
+        component:CategoryProductsComponent
+    },
+    {
         path:'login',
-        component:LoginComponent
+        component:LoginComponent,
+        
     },
     {
         path:'cart',
-        component:CustomerCartComponent
+        component:CustomerCartComponent,
+        // canActivate: [AuthGuard]
     },
     // {
     //     path:'products/:id',
@@ -61,7 +64,8 @@ export const routes: Routes = [
         children:[
             {
                 path:'product',
-                component:ProductComponent
+                component:ProductComponent,
+                 canActivate: [AuthGuard]
             },
             {
                 path:'category',
@@ -70,7 +74,7 @@ export const routes: Routes = [
         ]
 
     },
-   
+    // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
     // { 
     //     path: '**', 

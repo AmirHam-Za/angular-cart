@@ -4,7 +4,8 @@
 	<div class="w-3/12 bg-blue-100">
 		<ul>
 			<li *ngFor="let category of categoryList" >
-			<a (click)="nevigateToProducts(category.categoryId)" [routerLink]="['/products?id={{category.categoryId}}']"  routerLinkActive="router-link-active">{{category.categoryName}}</a>	
+			<a (click)="nevigateToProducts(category.categoryId)" [routerLink]="['/products?id={{category.categoryId}}']"  routerLinkActive="router-link-active">{{category}}</a>	
+			<!-- <a (click)="nevigateToProducts(category.categoryId)" [routerLink]="['/products?id={{category.categoryId}}']"  routerLinkActive="router-link-active">{{category.categoryName}}</a>	 -->
 			</li>
 		</ul>
 	</div>

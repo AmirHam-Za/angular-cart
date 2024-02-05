@@ -20,7 +20,7 @@ export class CategoryProductsComponent {
     this.activatedRoute.params.subscribe((res:any)=>{
       // debugger;
       this.activeCategoryId = res.id
-      console.log('HELLOOOOOOO',this.activeCategoryId)
+      // console.log('HELLOOOOOOO',this.activeCategoryId)
       this.loadProducts()
     })
   }
