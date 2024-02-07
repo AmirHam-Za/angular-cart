@@ -11,6 +11,7 @@ import { WebProductsComponent } from './pages/website/web-products/web-products.
 import { CustomerCartComponent } from './pages/website/customer-cart/customer-cart.component';
 import { AuthGuard } from './pages/services/auth/auth.guard';
 import { TodosComponent } from './todos/todos.component';
+import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 
 
 
@@ -22,8 +23,6 @@ export const routes: Routes = [
     },
    
     {
-        // path:'shop',
-        // component:LandingComponent
 
         path:'',
         component:LandingComponent,
@@ -55,10 +54,7 @@ export const routes: Routes = [
             },
         ] 
     },
-    // {
-    //     path:'crud',
-    //     component:CrudComponent
-    // },
+
     {
         path:'categoryProduct',
         component:CategoryProductsComponent
@@ -68,20 +64,7 @@ export const routes: Routes = [
         component:LoginComponent,
         
     },
-    // {
-    //     path:'todo',
-    //     component:TodoComponent,
-        
-    // },
-    // {
-    //     path:'cart',
-    //     component:CustomerCartComponent,
-    //     // canActivate: [AuthGuard]
-    // },
-    // {
-    //     path:'products/:id',
-    //     component:CategoryProductsComponent
-    // },
+
     {
         path:'',
         component:LayoutComponent,
@@ -99,10 +82,11 @@ export const routes: Routes = [
         ]
 
     },
-    // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-
-    // { 
+   
     //     path: '**', 
     //     component: PageNotFoundComponent 
     // },
+
+    { path: '**', component: PageNotFoundComponentComponent }
+
 ];
