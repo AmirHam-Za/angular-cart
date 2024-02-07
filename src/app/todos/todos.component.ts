@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { OnInit  } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-todos',
@@ -28,11 +29,15 @@ export class TodosComponent {
       // Image: ''
     };
   }
+  constructor(private titleService: Title) { }
+
   ngOnInit(): void {
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
       this.todoList = JSON.parse(savedTodos);
-    } 
+    }
+    
+    this.titleService.setTitle('Todo');
    }
 
    addTodo(): void {

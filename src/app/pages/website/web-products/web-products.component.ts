@@ -5,6 +5,7 @@ import { ProductService } from '../../services/product/product.service';
 import { CustomerCartComponent } from '../customer-cart/customer-cart.component';
 import { CartService } from '../../services/cart/cart.service';
 import { SharedService } from '../../services/shared/shared.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-web-products',
@@ -27,10 +28,15 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
   
 
   product: any; // Assume you have a product model
- constructor(private productSrv: ProductService, private router:Router, private sharedService: SharedService){}
+ constructor(private productSrv: ProductService,
+   private router:Router, 
+   private sharedService: SharedService,
+   private titleService: Title
+   ){}
   ngOnInit(): void {
     this.getAllProducts()
     this.getAllCategory() 
+    this.titleService.setTitle('Shop');
 
     // // Subscribe to cartItems$ to get real-time updates
     // this.cartService.cartItems$.subscribe(cartItems => {

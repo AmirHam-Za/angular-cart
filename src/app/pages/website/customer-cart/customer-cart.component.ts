@@ -4,6 +4,7 @@ import { WebProductsComponent } from '../web-products/web-products.component';
 import { CartService } from '../../services/cart/cart.service';
 import { SharedService } from '../../services/shared/shared.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-customer-cart',
@@ -15,6 +16,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class CustomerCartComponent implements OnInit {
   // http: any;
   cartItems: any[] = []; 
+
 submitForm() {
 throw new Error('Method not implemented.');
 }
@@ -32,7 +34,8 @@ throw new Error('Method not implemented.');
  constructor(
   private sharedService: SharedService,
   private cartSrv: CartService,
-  private http: HttpClient
+  private http: HttpClient,
+  private titleService: Title
   ) { 
 
      const storedTotal = localStorage.getItem('cartTotal');
@@ -72,6 +75,7 @@ throw new Error('Method not implemented.');
   // }
   async ngOnInit() {
     await this.initializeCartData();
+    this.titleService.setTitle('Cart');
   }
   
   private async initializeCartData(): Promise<void> {

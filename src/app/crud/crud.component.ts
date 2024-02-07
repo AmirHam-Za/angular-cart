@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { OnInit  } from '@angular/core';
 import { Crud } from '../model';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -27,11 +28,13 @@ export class CrudComponent implements OnInit {
       Image: ''
     };
   }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
     const savedCrud = localStorage.getItem('cruds');
     if (savedCrud) {
       this.crudList = JSON.parse(savedCrud);
+      this.titleService.setTitle('CRUD');
     }
   }
 

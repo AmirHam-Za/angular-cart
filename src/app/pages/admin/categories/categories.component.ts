@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { ProductService } from '../../services/product/product.service';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-categories',
@@ -13,7 +14,10 @@ import { CommonModule } from '@angular/common';
 export class CategoriesComponent {
 
   products$:Observable<any>
-  constructor(private productSrv:ProductService){
+  constructor(private productSrv:ProductService,
+    private titleService: Title
+    )
+  {
     this.products$ = this.productSrv.getCategory().pipe(
       map((item:any)=>
      {
@@ -24,6 +28,9 @@ export class CategoriesComponent {
         return item
       })
     )
+  }
+  ngOnInit(): void {
+    this.titleService.setTitle('Categories');
   }
   getAllCategory(){
 
