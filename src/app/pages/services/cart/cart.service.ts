@@ -8,33 +8,15 @@ export class CartService {
   private items: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]')
   private totaltems: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]')
 
-  // private cartItemsSubject = new BehaviorSubject<any[]>([]);
-  // cartItems$ = this.cartItemsSubject.asObservable();
-  // constructor() { }
-
-  // addCart(product: any){
-  //   // this.items.push(product)
-  //   this.items.push({...product, quantity: 1})
-  //   // save to local storage
-  //   localStorage.setItem('cartItems', JSON.stringify(this.items))
-  // }
-
   addCart(product: any) {
     const existingItem = this.items.find(item => item.id === product.id);
 
-
-    // const currentCartItems = this.cartItemsSubject.value;
-    // this.cartItemsSubject.next([...currentCartItems, { ...product, quantity: 1 }]);
-
     if (existingItem) {
-      // If the product with the same ID already exists, increase the quantity
       existingItem.quantity += 1;
     } else {
-      // If it's a new product, add it to the cart with quantity 1
       this.items.push({ ...product, quantity: 1 });
     }
 
-    // Save the updated cart to local storage
     localStorage.setItem('cartItems', JSON.stringify(this.items));
   }
   getItems() {
@@ -84,43 +66,27 @@ export class CartService {
       console.log()
     }
   }
-  // getTotal(){
-  //   return this.items.reduce((acc, item) => {
-  //     // return acc + item.productPrice * item.quantity
-  //     return acc + item.price * item.quantity
-  //   }, 0)
-  //   }
-
   getTotal() {
     const total = this.items.reduce((acc, item) => {
       return acc + item.price * item.quantity;
     }, 0);
-
-    // Store the total in localStorage
     localStorage.setItem('cartTotal', JSON.stringify(total));
 
     return total;
   }
-
-  // getTotalItems() : number{
-  //   return this.items.reduce((acc, item) => {
-  //     return acc + item.quantity * 1
-  //   }, 0)
-  //   }
   getTotalItems(): number {
     const totalItems = this.items.reduce((acc, item) => {
       return acc + item.quantity;
     }, 0);
 
-    // Store the total items in localStorage
     localStorage.setItem('cartTotalItems', JSON.stringify(totalItems));
 
     return totalItems;
   }
 
   clearCartItems() {
-    this.items = []; // Clear cartItems array
-    localStorage.removeItem('cartItems'); // Remove cartItems from local storage
+    this.items = []; 
+    localStorage.removeItem('cartItems'); 
   }
 
   // In CartService

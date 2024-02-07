@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
   constructor(private http: HttpClient) {}
-
   getProducts(): Observable<any> {
     return this.http.get('https://dummyjson.com/products');
   }

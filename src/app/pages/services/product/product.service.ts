@@ -25,8 +25,11 @@ export class ProductService {
   saveProduct(obj: any){
     return this.http.post(Constant.API_END_POINT + Constant.METHODS.CREATE_PRODUCT, obj)
   }
+  // addCart(obj: any){
+  //   return this.http.post(Constant.API_END_POINT + Constant.METHODS.ADD_CART, obj)
+  // }
   saveCart(obj: any){
-    return this.http.post('https://dummyjson.com/carts/add', obj)
+    return this.http.post(Constant.API_END_POINT + Constant.METHODS.ADD_CART, obj)
   }
   updateProduct(obj: any){
     return this.http.post(Constant.API_END_POINT + Constant.METHODS.UPDATE_PRODUCT, obj)

@@ -2,10 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ProductService } from '../../services/product/product.service';
-// TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com 
-// Initialization for ES Users
-// TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com 
-// Initialization for ES Users
+
 import {
   Dropdown,
   Ripple,
@@ -16,9 +13,6 @@ import { NavComponent } from "../../../nav/nav.component";
 
 initTE({ Dropdown, Ripple });
 // initTE({ Datepicker, Input }, { allowReinits: true });
-
-// initTE({ Dropdown, Ripple }, { allowReinits: true });
-
 @Component({
     selector: 'app-landing',
     standalone: true,

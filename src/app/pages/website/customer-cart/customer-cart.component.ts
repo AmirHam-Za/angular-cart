@@ -13,18 +13,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrl: './customer-cart.component.css'
 })
 export class CustomerCartComponent implements OnInit {
-
-  
   // http: any;
-  cartItems: any[] = []; // Assume this is your existing cartItems data
-
+  cartItems: any[] = []; 
 submitForm() {
 throw new Error('Method not implemented.');
 }
  cartService = inject(CartService)
  item: number = 0;
  itemTotal: number = 0;
- product: any; // Assume you have a product model
+ product: any; 
 
  totalPrice : number
  totalItems : number
@@ -38,10 +35,8 @@ throw new Error('Method not implemented.');
   private http: HttpClient
   ) { 
 
-     // Retrieve the total from localStorage during initialization
      const storedTotal = localStorage.getItem('cartTotal');
      if (storedTotal) {
-       // Parse the stored total back to a number
        this.totalPrice = parseFloat(storedTotal);
      } else {
        this.totalPrice = 0;
@@ -49,10 +44,8 @@ throw new Error('Method not implemented.');
      console.log('getTotalPrice>>>>>>',this.totalPrice)
 
 
-      // Retrieve the total items from localStorage during initialization
   const storedTotalItems = localStorage.getItem('cartTotalItems');
   if (storedTotalItems) {
-    // Parse the stored total items back to a number
     this.totalItems = parseFloat(storedTotalItems);
   } else {
     this.totalItems = 0;
@@ -103,82 +96,11 @@ throw new Error('Method not implemented.');
     // If you want to share the item count with other components
     this.sharedService.updateItems(this.itemTotal);
   }
-  // updateItemCount() {
-  //   this.item = this.cartSrv.getTotalItems();
-  //   // If you want to share the item count with other components
-  //   this.sharedService.updateItems(this.item);
-
-    
-  // }
-  // *********************************************
-//  getAllItems() {
-//   // Logic to get all items
-//   const items = 0; // your items calculation
-//   this.sharedService.updateTotal(items);
-//   console.log('FUCKKKKKK',items)
-// }
-
-// getTotal() {
-//   // Logic to get total
-//   const total = 0; // your total calculation
-//   this.sharedService.updateTotal(total);
-// }
+ 
 // ****************************
  deleteCart(item:any){
   this.cartService.delete(item)
  }
- 
-
-//  sendCartData() {
-//    // const transformedData = this.transformCartData();
-//   fetch('https://dummyjson.com/carts/add',  {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       userId: 1,
-//       products: this.cartItems
-//     })
-    
-//   })
-//   .then(res => res.json())
-//   .then(console.log);
-// }
- 
-// ORRRRRR
-
-// sendCartData() {
-//   const transformedData = {
-//     userId: 1,
-//     products: this.cartItems
-//   };
-
-//   this.http.post('https://dummyjson.com/carts/add', transformedData)
-//     .subscribe(
-//       (response: any) => {
-//         console.log('Cart data sent to the server:', response);
-//         this.cartItems = [];  // Optionally, clear the cartItems array after successful submission
-//         // this.itemTotal = 0;  
-//         // this.totalPrice = 0;  
-//         // this.totalItems = 0;  
-
-//         // item: number = 0;
-//         // itemTotal: number = 0;
-//         // product: any; // Assume you have a product model
-       
-//         // totalPrice : number
-//         // totalItems : number
-        
-//         // if(this.cartItems !==null){
-//         // alert('Cart data sent to the server: successfully')
-//         // }else{
-//         //   alert('Your Cart Is Empty')
-//         // }
-//       },
-//       (error: any) => {
-//         console.error('Error sending cart data:', error);
-//       }
-//     );
-// }
 
 sendCartData() {
   const transformedData = {
