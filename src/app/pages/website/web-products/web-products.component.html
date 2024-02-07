@@ -1,5 +1,7 @@
-<p>web-products works!</p>
-<app-customer-cart></app-customer-cart>
+
+
+<!-- <p>web-products works!</p> -->
+<!-- <app-customer-cart></app-customer-cart> -->
 <!-- Other component's template where you use app-customer-cart -->
 
 <!-- <app-customer-cart [productNames]="getProductNames()"></app-customer-cart> -->
@@ -13,7 +15,7 @@
 		</ul>
 	</div> -->
 
-	<div class="w-9/12 flex ">
+	<div class="w-full flex ">
 		<!-- ***********cart card************** -->
 		<!-- <div class="absolute text-center w-36 h-24 right-4 bg-blue-200 rounded-lg shadow-3"> -->
 			<!-- <p class="p-2 text-lg font-semibold">Items: {{ item }}</p>
@@ -26,43 +28,86 @@
 			<div class="m-1">
 				<div class="bg-blue-200 w-full flex justify-between p-2 rounded-t ">
 					<p class="text-xl font-semibold">Product List</p>
-
 				</div>
 				<div class="w-full flex flex-wrap justify-center bg-gray-100 rounded-b min-h-8">
-					<div *ngFor="let product of productsList" class="w-4/12">
+					<div *ngFor="let product of productsList" class="w-3/12">
 						<div class=" ">
 
 							<div class="bg-blue-50 p-1 m-1 border rounded shadow flex flex-col">
 
-								<div class="z-10 w-full bg-blue-300 ">
+								<div class="w-full  bg-blue-300 ">
 									<!-- <img class="border mr-2" [src]="product.productImageUrl" alt="" width="150" height="100"> -->
-									<img class="border mr-2" [src]="product.thumbnail" alt="" >
+									<img class="border mr-2" [src]="product.thumbnail" alt="" height="200" >
 									
 
 										<!-- <div class="absolute top-0 w-full h-full bg-gray-500 opacity-55"></div> -->
 									
 								</div>
 
-								<div class="flex flex-col text-center ">
-									<h1 class="text-xl font-semibold mb-2">{{product.title}}</h1>
-									<h1 class="text-xl font-semibold mb-2">$: {{product.price}}</h1>
-									<h1 class="text-xl font-semibold mb-2">Category: {{product.category}}</h1>
-									<div class="flex justify-center">
+								<div class="flex flex-col text-center">
+									<h1 class="text-gray-500 font-semibold">{{product.title}}</h1>
+									<h1 class="text-gray-500 font-semibold"><i class="fa-regular fa-money-bill-1 text-sm"></i>&nbsp;{{product.price}}</h1>
+									<h1 class="text-gray-500 font-semibold"><i class="fa-solid fa-layer-group"></i>&nbsp;
+										{{product.category}}
+									</h1>
+									<div *ngIf="cartService.getQuantityInCart(product) === 0"  class="flex justify-center ">
 										<a (click)="addToCart(product)"
-										class="w-[200px]  px-2 border text-sm border-purple-300 rounded-xl cursor-pointer">Add to
+										class="w-[200px] bg-blue-400 px-2 border text-sm border-purple-300 rounded-xl cursor-pointer">Add to
 										cart
 									</a>
 									</div>
 								</div>
+
 								<!-- Display cart information dynamically -->
-								<div *ngIf="cartService.isProductInCart(product)">
+								<!-- <div *ngIf="cartService.isProductInCart(product)">
 									<p>Quantity in Cart: {{ cartService.getQuantityInCart(product) }}</p>
-									<p>Total Price in Cart: {{ cartService.getTotalPriceForProduct(product) }}</p>
+									<p>Total Price in Cart: {{ cartService.getTotalPriceForProduct(product) }}</p> -->
 	
 									 <!-- Increment, Decrement, and Delete buttons -->
-									 <button (click)="incrementQuantity(product.id)">Increment</button>
+									 <!-- <button (click)="incrementQuantity(product.id)">Increment</button>
 									 <button (click)="decrementQuantity(product.id)">Decrement</button>
-									 <button (click)="deleteFromCart(product)">Delete</button>
+									 <button (click)="deleteFromCart(product)">Delete</button> -->
+								<!-- </div> -->
+								<!-- Display cart information dynamically -->
+								
+								
+								
+								<div *ngIf="cartService.isProductInCart(product)" class="mt-2">
+									<!-- <p>Quantity in Cart: {{ cartService.getQuantityInCart(product) }}</p>
+									<p>Total Price in Cart: {{ cartService.getTotalPriceForProduct(product) }}</p> -->
+	
+									 <!-- Increment, Decrement, and Delete buttons -->
+									<div class="flex justify-center gap-3 bg-blue-200">
+										<button (click)="incrementQuantity(product.id)">
+											<div class="flex justify-center items-center rounded px-2 text-red-600 border border-red-600">
+												<i class="fa-solid fa-plus"></i>
+											</div>
+										</button>
+										 <button (click)="deleteFromCart(product)">
+											<div class="flex justify-center items-center rounded px-2 text-red-600 border border-red-600">
+												<!-- <i class="fa-solid fa-xmark"></i> -->
+												Delete
+											</div>
+										</button>
+										
+										 <button (click)="decrementQuantity(product.id)">
+											<div class="flex justify-center items-center rounded px-2 text-red-600 border border-red-600">
+												<i class="fa-solid fa-minus"></i>
+											</div>
+										</button>
+									</div>
+									
+									<div class="flex justify-center gap-3 bg-blue-200 mt-1 text-gray-700 font-semibold">
+										<span>
+											<i class="fa-solid fa-suitcase">&nbsp;</i>{{ cartService.getQuantityInCart(product) }}
+										</span>
+										<span>
+											<i class="fa-regular fa-money-bill-1 text-sm"> </i>&nbsp;{{ cartService.getTotalPriceForProduct(product) }}
+										</span>
+										
+									</div>
+									
+									
 								</div>
 							</div>
 						</div>

@@ -7,9 +7,11 @@ export interface Crud {
 
 
 export interface Todo {
-    Title:string;
-    Id: any;
-    Price: string;
+    title:string;
+    id: any;
+    startTime: string;
+    endTime: string;
+    description: string;
     // Image?: string; // URL or Base64-encoded string
 }
 

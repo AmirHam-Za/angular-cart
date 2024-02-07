@@ -1,38 +1,89 @@
-<p>customer-cart works!</p>
-<h1>Cart</h1>
+<!-- <p>customer-cart works!</p>
+<h1>Cart</h1> -->
 <!-- {{cartService.getItems() | json}} -->
+<div class="bg-blue-200 w-full flex justify-between p-2 rounded-t border-l-4 border-blue-500 ">
+    <p class="text-xl font-semibold">Cart</p>
+</div>
 @for(item of cartService.getItems(); track item.id) {
-    <div class="bg-red-200 border rounded">
-        <h1>{{item.productName}}</h1>
-        <h1>Id: {{item.id}}</h1>
-        <h1>Price: {{item.price}}</h1>
-        <p>Quantity: {{item.quantity}}</p>
-        <p>Total Amount: {{item.price * item.quantity}}</p> <!-- Display total price for the item -->
-
-        <div class="flex gap-2">
-        <button class="bg-red-400 px-2 rounded" (click)="deleteCart(item)">Delete</button>
-        <!-- <button class="bg-blue-400 px-2 rounded" (click)="cartService.incrementQuantity(item.productId)">+</button>
-        <button class="bg-blue-400 px-2 rounded" (click)="cartService.decrementQuantity(item.productId)">-</button> -->
-        <button class="bg-blue-400 px-2 rounded" (click)="cartService.incrementQuantity(item.id)">+</button>
-        <button class="bg-blue-400 px-2 rounded" (click)="cartService.decrementQuantity(item.id)">-</button>
+    <div class="flex justify-center">
+        <div class="p-1 m-1 border rounded shadow flex  justify-center ">
+            
+            <div class="">
+                <img class="w-full h-36" src="{{item.thumbnail}}" alt="">
+                    
+                <h1 class="text-gray-600 font-semibold text-center">Name: {{item.title}}</h1>
+                <!-- <h1 class="text-gray-600 font-semibold text-center">ID: {{item.id}}</h1> -->
+                <h1 class="text-gray-600 font-semibold text-center">Price:  {{item.price}}</h1>
+                <p class="text-gray-600 font-semibold text-center">Quantity:  {{item.quantity}}</p>
+                <p class="text-gray-600 font-semibold text-center">Amount:  {{item.price * item.quantity}}</p> 
+                    <!-- Display total price for the item  -->
+    
+                    
+                <div class="flex gap-2 justify-center">
+                    <div class="flex justify-center gap-3">
+                        <button (click)="cartService.incrementQuantity(item.id)">
+                            <div class="flex justify-center items-center rounded px-2 text-red-600 border border-red-600">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </button>
+                        <button (click)="deleteCart(item)">
+                            <div class="flex justify-center items-center rounded px-2 text-red-600 border border-red-600">
+                                <!-- <i class="fa-solid fa-xmark"></i> -->
+                                Delete
+                            </div>
+                        </button>
+                        
+                        <button (click)="cartService.decrementQuantity(item.id)">
+                            <div class="flex justify-center items-center rounded px-2 text-red-600 border border-red-600">
+                                <i class="fa-solid fa-minus"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 }
 
 <!-- from cartService -->
-<h1>Total: {{cartService.getTotal()}}</h1>
-<h1>Total Items: {{cartService.getTotalItems()}}</h1>
-
-<br><br>
-<!-- from components -->
-<p>Total Items: {{ getTotalItems() }}</p>
-<p>Total Price: {{ getTotalPrice() }}</p>
-<p>Total Cart: {{ getAllCartItems() }}</p>
-
+<ng-container *ngIf="cartService.getTotal() !== 0; else elseBlock">
+    <div class="p-1 m-1 border rounded shadow flex justify-center">
+      <div>
+        <h1 class="font-semibold text-gray-600">Total: {{cartService.getTotal()}}</h1>
+        <h1 class="font-semibold text-gray-600">Total Items: {{cartService.getTotalItems()}}</h1>
+      </div>
+    </div>
+  </ng-container>
   
+  <ng-template #elseBlock>
+    <div class="flex justify-center bg-blue-100 p-2 rounded-b">
+      <div>
+        <h1 class="text-xl font-semibold text-gray-600">Happy buying!.</h1>
+        <h1 class="font-semibold text-red-600">Your cart is empty.</h1>
+        
+        <div class="text-center mt-4">
+          <a  routerLink="/shop" routerLinkActive="active-menu-item" class="bg-blue-300 p-1 rounded-xl px-4 text-gray-600 font-semibold" href="">Buy more</a>
+       </div>
+      </div>
+      
+    </div>
 
-<button *ngIf="getTotalPrice() !== 0" (click)="sendCartData()">
-    <span class="bg-green-300 p-1 rounded text-xl font-semibold">
-        Submit Cart
-    </span>
-</button>
+  </ng-template>
+  
+<!-- from components -->
+<!-- <p>Total Items: {{ getTotalItems() }}</p>
+<p>Total Price: {{ getTotalPrice() }}</p>
+<p>Total Cart: {{ getAllCartItems() }}</p> -->
+
+
+
+<div *ngIf="cartService.getTotal() !== 0"  class="my-2 text-center">
+    <button  
+    (click)="sendCartData()"
+    class="text-xs bg-blue-200 p-1 rounded-xl px-4 text-gray-600 font-semibold active-menu-item"
+    >
+        <span class="w-[200px] p-1  text-gray-600 font-semibold  bg-blue-300 px-2 border  rounded-xl cursor-pointer">
+            Submit Cart
+        </span>
+    </button>
+</div>

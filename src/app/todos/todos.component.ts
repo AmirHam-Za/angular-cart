@@ -20,9 +20,11 @@ export class TodosComponent {
 
   get initodo(): Todo {
     return {
-      Title: '',
-      Id: null,
-      Price:'',
+      title: '',
+      id: null,
+      description:'',
+      startTime:'',
+      endTime:'',
       // Image: ''
     };
   }
@@ -34,15 +36,15 @@ export class TodosComponent {
    }
 
    addTodo(): void {
-    if (this.todo.Id) {
+    if (this.todo.id) {
       this.todoList = this.todoList.map(o => {
-        if (o.Id === this.todo.Id) {
+        if (o.id === this.todo.id) {
           return { ...this.todo };
         }
         return o;
       });
     } else {
-      this.todo.Id = Date.now();
+      this.todo.id = Date.now();
       this.todoList.push({ ...this.todo });
     }
     localStorage.setItem('todos', JSON.stringify(this.todoList));
@@ -63,7 +65,7 @@ export class TodosComponent {
   
     // Proceed with deletion only if the user confirms
     if (isConfirmed) {
-      this.todoList = this.todoList.filter(o => o.Id !== id);
+      this.todoList = this.todoList.filter(o => o.id !== id);
       localStorage.setItem('todos', JSON.stringify(this.todoList));
     }
   }

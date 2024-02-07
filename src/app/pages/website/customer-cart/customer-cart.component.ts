@@ -146,37 +146,61 @@ throw new Error('Method not implemented.');
  
 // ORRRRRR
 
+// sendCartData() {
+//   const transformedData = {
+//     userId: 1,
+//     products: this.cartItems
+//   };
+
+//   this.http.post('https://dummyjson.com/carts/add', transformedData)
+//     .subscribe(
+//       (response: any) => {
+//         console.log('Cart data sent to the server:', response);
+//         this.cartItems = [];  // Optionally, clear the cartItems array after successful submission
+//         // this.itemTotal = 0;  
+//         // this.totalPrice = 0;  
+//         // this.totalItems = 0;  
+
+//         // item: number = 0;
+//         // itemTotal: number = 0;
+//         // product: any; // Assume you have a product model
+       
+//         // totalPrice : number
+//         // totalItems : number
+        
+//         // if(this.cartItems !==null){
+//         // alert('Cart data sent to the server: successfully')
+//         // }else{
+//         //   alert('Your Cart Is Empty')
+//         // }
+//       },
+//       (error: any) => {
+//         console.error('Error sending cart data:', error);
+//       }
+//     );
+// }
+
 sendCartData() {
   const transformedData = {
     userId: 1,
-    products: this.cartItems
+    // products: this.cartItems
+    products: this.cartService.getItems()
   };
 
   this.http.post('https://dummyjson.com/carts/add', transformedData)
     .subscribe(
       (response: any) => {
         console.log('Cart data sent to the server:', response);
-        this.cartItems = [];  // Optionally, clear the cartItems array after successful submission
-        // this.itemTotal = 0;  
-        // this.totalPrice = 0;  
-        // this.totalItems = 0;  
+        // this.cartItems = [];  // Optionally, clear the cartItems array after successful submission
+        this.cartService.clearCartItems(); // Clear cartItems in cartService
+        alert('Cart data sent to the server');
 
-        // item: number = 0;
-        // itemTotal: number = 0;
-        // product: any; // Assume you have a product model
-       
-        // totalPrice : number
-        // totalItems : number
-        
-        // if(this.cartItems !==null){
-        // alert('Cart data sent to the server: successfully')
-        // }else{
-        //   alert('Your Cart Is Empty')
-        // }
+        localStorage.removeItem('cartItems');
       },
       (error: any) => {
         console.error('Error sending cart data:', error);
       }
     );
 }
+
 }

@@ -1,7 +1,7 @@
 
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Todo } from './model';
 import { FormsModule } from '@angular/forms';
 import { CrudComponent } from './crud/crud.component';
@@ -23,6 +23,8 @@ import { CartService } from './pages/services/cart/cart.service';
     NavComponent, 
     LandingComponent, 
     CustomerCartComponent, 
+    RouterLinkActive,
+    RouterLink
     ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

@@ -66,7 +66,16 @@ export class CartService {
       localStorage.setItem('cartItems', JSON.stringify(this.items))
     }
   }
+
   decrementQuantity(id: number) {
+    let item = this.items.find((i) => i.id === id);
+    if (item && item.quantity !>= 2) {
+        item.quantity--;
+        localStorage.setItem('cartItems', JSON.stringify(this.items));
+    }
+}
+
+  decdrementQuantity(id: number) {
     // let item = this.items.find((i) => i.productId === id)
     let item = this.items.find((i) => i.id === id)
     if (item) {
@@ -109,7 +118,10 @@ export class CartService {
     return totalItems;
   }
 
-
+  clearCartItems() {
+    this.items = []; // Clear cartItems array
+    localStorage.removeItem('cartItems'); // Remove cartItems from local storage
+  }
 
   // In CartService
   getTotalPriceForAllItems(): number {
