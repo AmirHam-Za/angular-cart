@@ -84,8 +84,6 @@ export class WebProductsComponent implements OnInit {
     //   this.categoryList = res
     //   console.log('getAllCategory==>',this.categoryList)
     // })
-    
-    
   }
   
   // products: any = this.getAllProducts()
