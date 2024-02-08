@@ -80,10 +80,10 @@ export class WebProductsComponent implements OnInit {
   },0); 
   }
     getAllCategory(){
-    this.productSrv.getCategory().subscribe((res:any)=>{
-      this.categoryList = res
-      console.log('getAllCategory==>',this.categoryList)
-    })
+    // this.productSrv.getCategory().subscribe((res:any)=>{
+    //   this.categoryList = res
+    //   console.log('getAllCategory==>',this.categoryList)
+    // })
     
     
   }

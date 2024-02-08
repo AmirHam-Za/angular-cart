@@ -32,7 +32,4 @@ export class CategoriesComponent {
   ngOnInit(): void {
     this.titleService.setTitle('Categories');
   }
-  getAllCategory(){
-
-  }
 }
