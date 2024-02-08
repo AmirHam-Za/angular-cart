@@ -1,4 +1,4 @@
-<!-- <p>categories works!</p> -->
+
 
 <app-loader *ngIf="isLoading; else loadedContent"></app-loader>
 
@@ -16,24 +16,12 @@
                 <tr>
                     <th scope="col" class="py-3 px-6 text-xl font-semibold">Sr No.</th>
                     <th scope="col" class="py-3 px-6 text-xl font-semibold">Category Name</th>
-                    <!-- <th scope="col" class="py-3 px-6">Action</th> -->
-
                 </tr>
                 </thead>
                 <tbody>
-                    <!-- using observable -->
-                <!-- <tr *ngFor="let item of categoryList$ | async; let index =index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td class="py-4 px-6 text-lg font-semibold">{{index+1}}</td>
-                    <td class="py-4 px-6 text-lg font-semibold">{{item}}</td>
-                </tr> -->
-                
-                <tr *ngFor="let item of categoryList; let i = index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr *ngFor="let item of categoryList; let i = index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td class="py-4 px-6 text-lg font-semibold">{{i+1}}</td>
                     <td class="py-4 px-6 text-lg font-semibold">{{item}}</td>
-                     <!-- <td class="py-4 px-6">
-                        <a class="p-1 text-green-500 cursor-pointer" >Edit</a>
-                        <a class="p-1 text-red-500 cursor-pointer" >Delete</a>
-                    </td> -->
                 </tr>
                
                 </tbody>

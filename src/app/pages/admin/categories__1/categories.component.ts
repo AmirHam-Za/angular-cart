@@ -14,7 +14,7 @@ import { LoaderComponent } from '../../services/loader/loader.component';
 })
 export class CategoriesComponent  {
 
-  categoryList$:Observable<any>
+  // categoryList$:Observable<any>
   categoryList:any [] = []
   isLoading: boolean = false;
   constructor
@@ -24,12 +24,12 @@ export class CategoriesComponent  {
   )
   {
     // fetching category list using observable
-    this.categoryList$ = this.productSrv.getCategory().pipe(
-      map((item:any)=>{
-        // console.log( 'categoryList$---->>>>>', item)
-        return item
-      })
-      )
+    // this.categoryList$ = this.productSrv.getCategory().pipe(
+    //   map((item:any)=>{
+    //     // console.log( 'categoryList$---->>>>>', item)
+    //     return item
+    //   })
+    //   )
     }
   ngOnInit(): void {
     this.titleService.setTitle('Categories');
