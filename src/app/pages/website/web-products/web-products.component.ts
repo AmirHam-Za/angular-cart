@@ -4,7 +4,6 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ProductService } from '../../services/product/product.service';
 import { CustomerCartComponent } from '../customer-cart/customer-cart.component';
 import { CartService } from '../../services/cart/cart.service';
-import { SharedService } from '../../services/shared/shared.service';
 import { Title } from '@angular/platform-browser';
 import { LoaderComponent } from '../../services/loader/loader.component';
 
