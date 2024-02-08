@@ -6,7 +6,7 @@ import { CustomerCartComponent } from '../customer-cart/customer-cart.component'
 import { CartService } from '../../services/cart/cart.service';
 import { SharedService } from '../../services/shared/shared.service';
 import { Title } from '@angular/platform-browser';
-import { LoaderComponent } from "../../../loader/loader.component";
+import { LoaderComponent } from '../../services/loader/loader.component';
 
 @Component({
     selector: 'app-web-products',
@@ -17,7 +17,7 @@ import { LoaderComponent } from "../../../loader/loader.component";
 })
 
 
-export class WebProductsComponent implements OnInit { //use OnInit for sharedService only
+export class WebProductsComponent implements OnInit { 
   cartService = inject(CartService)
   productsList:any [] = []
   categoryList:any [] = []
@@ -26,9 +26,8 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
 
   item: number = 0;
   itemCount: number = 0;
-  
+  product: any; 
 
-  product: any; // Assume you have a product model
  constructor(private productSrv: ProductService,
    private router:Router, 
    private sharedService: SharedService,
@@ -43,26 +42,10 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
     //   this.isLoading = false; // Set to false when loading is complete
     // }, 5000); // Adjust the delay time as needed
   
-
-    // // Subscribe to cartItems$ to get real-time updates
-    // this.cartService.cartItems$.subscribe(cartItems => {
-    //   // Implement logic to update the product's cart information based on cartItems
-    //   // For example, you can filter cartItems for the current product
-    //   // and update a property in the product model indicating the quantity in the cart
-    //   const productInCart = cartItems.find(item => item.id === this.product.id);
-    //   this.product.quantityInCart = productInCart ? productInCart.quantity : 0;
-    // });
-    // // console.log('#################',this.getAllCategory()) 
-
-   
-
-
     // sharedService
     this.sharedService.currentItems.subscribe(items => this.item = items);
     this.sharedService.currentTotal.subscribe(items => this.itemCount = items);
     console.log('bbbbbbbbbbb>>>',this.item)
-
-
     
   }
 
@@ -81,20 +64,20 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
   // }
   getAllProducts(): void {
     
-    this.isLoading = true; // Set isLoading to true before fetching data
+    this.isLoading = true; 
     setTimeout(() => {
     this.productSrv.getProducts().subscribe(
       (res: any) => {
         this.productsList = res.products;
         console.log('getProducts-->', this.productsList);
-        this.isLoading = false; // Set isLoading to false after data is fetched
+        this.isLoading = false; 
       },
       (error: any) => {
         console.error('Error fetching products:', error);
-        this.isLoading = false; // Set isLoading to false in case of error
+        this.isLoading = false; 
       }
     );
-  },0); // Specify the delay in milliseconds
+  },0); 
   }
     getAllCategory(){
     this.productSrv.getCategory().subscribe((res:any)=>{
