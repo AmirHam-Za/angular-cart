@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  // private items:any[] =[]
   private items: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]')
   private totaltems: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]')
 
@@ -22,26 +21,20 @@ export class CartService {
   getItems() {
     return this.items
   }
-  // delete(item: any){
-  //   this.items = this.items.filter((i) => i.id !== item.id)
-  // }
   delete(item: any) {
     // this.items = this.items.filter((i) => i.productId !== item.productId);
     this.items = this.items.filter((i) => i.id !== item.id);
 
     localStorage.setItem('cartItems', JSON.stringify(this.items))
-
   }
-
 
   totalPricePerItem(product: any): number {
     const cartItem = this.items.find(item => item.id === product.id);
     // return cartItem ? cartItem.price * cartItem.quantity : 0;
     return cartItem.price * cartItem.quantity;
-
   }
+
   incrementQuantity(id: number) {
-    // let item = this.items.find((i) => i.productId === id)
     let item = this.items.find((i) => i.id === id)
     if (item) {
       item.quantity++
@@ -51,21 +44,12 @@ export class CartService {
 
   decrementQuantity(id: number) {
     let item = this.items.find((i) => i.id === id);
-    if (item && item.quantity !>= 2) {
-        item.quantity--;
-        localStorage.setItem('cartItems', JSON.stringify(this.items));
-    }
-}
-
-  decdrementQuantity(id: number) {
-    // let item = this.items.find((i) => i.productId === id)
-    let item = this.items.find((i) => i.id === id)
-    if (item) {
-      item.quantity--
-      localStorage.setItem('cartItems', JSON.stringify(this.items))
-      console.log()
+    if (item && item.quantity! >= 2) {
+      item.quantity--;
+      localStorage.setItem('cartItems', JSON.stringify(this.items));
     }
   }
+
   getTotal() {
     const total = this.items.reduce((acc, item) => {
       return acc + item.price * item.quantity;
@@ -74,6 +58,7 @@ export class CartService {
 
     return total;
   }
+
   getTotalItems(): number {
     const totalItems = this.items.reduce((acc, item) => {
       return acc + item.quantity;
@@ -85,15 +70,8 @@ export class CartService {
   }
 
   clearCartItems() {
-    this.items = []; 
-    localStorage.removeItem('cartItems'); 
-  }
-
-  // In CartService
-  getTotalPriceForAllItems(): number {
-    return this.items.reduce((acc, item) => {
-      return acc + item.price * item.quantity;
-    }, 0);
+    this.items = [];
+    localStorage.removeItem('cartItems');
   }
 
   // In CartService
@@ -105,12 +83,6 @@ export class CartService {
     const cartItem = this.items.find(item => item.id === product.id);
     return cartItem ? cartItem.quantity : 0;
   }
-
-  getTotalPriceForProduct(product: any): number {
-    const cartItem = this.items.find(item => item.id === product.id);
-    return cartItem ? cartItem.price * cartItem.quantity : 0;
-  }
-
 }
 
 

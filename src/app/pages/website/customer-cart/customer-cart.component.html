@@ -1,98 +1,115 @@
-<!-- <p>customer-cart works!</p>
-<h1>Cart</h1> -->
-<!-- {{cartService.getItems() | json}} -->
-<div class="bg-blue-200 w-full flex justify-between p-2 rounded-t border-l-4 border-blue-500 ">
-    <p class="text-xl font-semibold text-gray-600">Cart</p>
-</div>
-@for(item of cartService.getItems(); track item.id) {
-    <div class="flex justify-center">
-        <div class="p-1 m-1 border rounded shadow flex  justify-center ">
-            
-            <div class="">
-                <img class="w-full h-36" src="{{item.thumbnail}}" alt="">
-                    
-                <h1 class="text-gray-600 font-semibold text-center">Name: {{item.title}}</h1>
-                <!-- <h1 class="text-gray-600 font-semibold text-center">ID: {{item.id}}</h1> -->
-                <h1 class="text-gray-600 font-semibold text-center">Price:  {{item.price}}</h1>
-                <p class="text-gray-600 font-semibold text-center">Quantity:  {{item.quantity}}</p>
-                <p class="text-gray-600 font-semibold text-center">Amount:  {{item.price * item.quantity}}</p> 
-                    <!-- Display total price for the item  -->
-    
-                    
-                <div class="flex gap-2 justify-center">
-                    <div class="flex justify-center gap-3">
-                        <button (click)="cartService.incrementQuantity(item.id)">
-                            <div class="flex justify-center items-center rounded px-2 text-red-600 border border-red-600">
-                                <i class="fa-solid fa-plus"></i>
-                            </div>
-                        </button>
-                        <button (click)="deleteCart(item)">
-                            <div class="flex justify-center items-center rounded px-2 text-red-600 border border-red-600">
-                                <!-- <i class="fa-solid fa-xmark"></i> -->
-                                Delete
-                            </div>
-                        </button>
-                        
-                        <button (click)="cartService.decrementQuantity(item.id)">
-                            <div class="flex justify-center items-center rounded px-2 text-red-600 border border-red-600">
-                                <i class="fa-solid fa-minus"></i>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
+<div class="w-screen flex justify-center">
+  <div class="w-9/12">
+    <div
+      class="bg-blue-200 flex justify-between p-2 rounded-t border-l-4 border-blue-500"
+    >
+      <p class="text-xl w-full font-semibold text-gray-600">Cart</p>
+    </div>
+    <!-- from cartService -->
+    <ng-container *ngIf="cartService.getTotal() !== 0; else elseBlock">
+      <table class="table-auto w-full">
+        <thead>
+          <tr class="text-gray-600 bg-gray-300">
+            <th class="px-4 py-2">Thumbnail</th>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Price</th>
+            <th class="px-4 py-2">Quantity</th>
+            <th class="px-4 py-2">Amount</th>
+            <th class="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(item of cartService.getItems(); track item.id) {
+          <tr
+            class="hover:bg-gray-100 text-gray-600 font-semibold text-center border"
+          >
+            <td class="px-4 py-2">
+              <img class="w-full h-24 rounded" [src]="item.thumbnail" alt="" />
+            </td>
+            <td class="px-4 py-2">{{ item.title }}</td>
+            <td class="px-4 py-2">{{ item.price }}</td>
+            <td class="px-4 py-2">{{ item.quantity }}</td>
+            <td class="px-4 py-2">{{ item.price * item.quantity }}</td>
+            <td class="px-4 py-2">
+              <div class="flex gap-2">
+                <button (click)="cartService.incrementQuantity(item.id)">
+                  <div
+                    class="flex btn-div justify-center items-center rounded h-8 px-2 text-purple-400 border border-purple-400"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </div>
+                </button>
+                <button (click)="deleteCart(item)">
+                  <div
+                    class="flex btn-div justify-center items-center rounded h-8 px-2 text-red-400 border border-red-400"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </div>
+                </button>
+                <button (click)="cartService.decrementQuantity(item.id)">
+                  <div
+                    class="flex btn-div justify-center items-center rounded h-8 px-2 text-purple-400 border border-purple-400"
+                  >
+                    <i class="fa-solid fa-minus"></i>
+                  </div>
+                </button>
+              </div>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+
+      <div class="p-1 m-1 border rounded shadow flex justify-center">
+        <div>
+          <h1 class="mb-2 font-semibold text-gray-600">
+            <span class="text-xl">Total Amount:&nbsp;</span>
+            <span class="bg-purple-200 p-1 rounded">{{
+              cartService.getTotal()
+            }}</span>
+          </h1>
+          <h1 class="font-semibold text-gray-600">
+            <span class="text-xl">Total Items:</span
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="bg-purple-200 p-1 rounded">{{
+              cartService.getTotalItems()
+            }}</span>
+          </h1>
         </div>
-    </div>
-}
-
-<!-- from cartService -->
-<ng-container *ngIf="cartService.getTotal() !== 0; else elseBlock">
-    <div class="p-1 m-1 border rounded shadow flex justify-center">
-      <div>
-        <h1 class="font-semibold text-gray-600">Total: {{cartService.getTotal()}}</h1>
-        <h1 class="font-semibold text-gray-600">Total Items: {{cartService.getTotalItems()}}</h1>
       </div>
-    </div>
-  </ng-container>
-  
-  <ng-template #elseBlock>
-    <div class="flex justify-center bg-blue-100 p-2 rounded-b">
-      <div>
-        <h1 class="text-xl font-semibold text-gray-600">Happy buying!.</h1>
-        <h1 class="font-semibold text-red-600">Your cart is empty.</h1>
-        
-        <div class="text-center mt-4">
-          <a  routerLink="/shop" routerLinkActive="active-menu-item" class="bg-blue-300 p-1 rounded-xl px-4 text-gray-600 font-semibold" href="">Buy more</a>
-       </div>
+    </ng-container>
+
+    <ng-template #elseBlock>
+      <div class="flex justify-center bg-blue-100 p-2 rounded-b">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-600">Happy buying!.</h1>
+          <h1 class="font-semibold text-red-600">Your cart is empty.</h1>
+
+          <div class="text-center mt-4">
+            <a
+              routerLink="/shop"
+              routerLinkActive="active-menu-item"
+              class="bg-blue-300 p-1 rounded-xl px-4 text-gray-600 font-semibold"
+              href=""
+              >Buy more</a
+            >
+          </div>
+        </div>
       </div>
-      
+    </ng-template>
+
+    <div *ngIf="cartService.getTotal() !== 0" class="my-2 text-center">
+      <button
+        (click)="sendCartData()"
+        class="bg-blue-200 p-1 rounded-xl px-4 text-gray-600 font-semibold active-menu-item"
+      >
+        <span
+          class="w-[200px] p-1 text-gray-600 font-semibold bg-blue-300 hover:bg-blue-400 transition px-2 border rounded-xl cursor-pointer"
+        >
+          Submit Cart
+        </span>
+      </button>
+      <br /><br />
     </div>
-
-  </ng-template>
-  
-<!-- from components -->
-<!-- <p>Total Items: {{ getTotalItems() }}</p>
-<p>Total Price: {{ getTotalPrice() }}</p>
-<p>Total Cart: {{ getAllCartItems() }}</p> -->
-
-
-
-<div *ngIf="cartService.getTotal() !== 0"  class="my-2 text-center">
-    <button  
-    (click)="sendCartData()"
-    class=" bg-blue-200 p-1 rounded-xl px-4 text-gray-600 font-semibold active-menu-item"
-    >
-        <span class="w-[200px] p-1  text-gray-600 font-semibold  bg-blue-300 hover:bg-blue-400 transition px-2 border  rounded-xl cursor-pointer">
-            Submit Cart
-        </span>
-    </button>
-    <br><br>
-    <button  
-    (click)="checkOut()"
-    class=" bg-blue-200 p-1 rounded-xl px-4 text-gray-600 font-semibold active-menu-item"
-    >
-        <span class="w-[200px] p-1  text-gray-600 font-semibold  bg-blue-300 hover:bg-blue-400 transition px-2 border  rounded-xl cursor-pointer">
-            Checkout
-        </span>
-    </button>
+  </div>
 </div>

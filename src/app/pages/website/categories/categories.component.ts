@@ -12,43 +12,31 @@ import { LoaderComponent } from '../../services/loader/loader.component';
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })
-export class CategoriesComponent  {
-
-  // categoryList$:Observable<any>
-  categoryList:any [] = []
+export class CategoriesComponent {
+  categoryList: any[] = []
   isLoading: boolean = false;
   constructor
-  (
-    private productSrv:ProductService,
-    private titleService: Title
-  )
-  {
-    // fetching category list using observable
-    // this.categoryList$ = this.productSrv.getCategory().pipe(
-    //   map((item:any)=>{
-    //     // console.log( 'categoryList$---->>>>>', item)
-    //     return item
-    //   })
-    //   )
-    }
+    (
+      private productSrv: ProductService,
+      private titleService: Title
+    ) { }
   ngOnInit(): void {
     this.titleService.setTitle('Categories');
     this.getAllCategory()
   }
 
-  // fetching category list using service
   getAllCategory(): void {
-    this.isLoading = true; 
-  
+    this.isLoading = true;
+
     this.productSrv.getCategory().subscribe(
       (res: any) => {
         this.categoryList = res;
         console.log('getAllCategory==>', this.categoryList);
-        this.isLoading = false; 
+        this.isLoading = false;
       },
       (error: any) => {
         console.error('Error fetching categories:', error);
-        this.isLoading = false; 
+        this.isLoading = false;
       }
     );
   }
