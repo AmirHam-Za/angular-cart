@@ -6,13 +6,14 @@ import { CustomerCartComponent } from '../customer-cart/customer-cart.component'
 import { CartService } from '../../services/cart/cart.service';
 import { SharedService } from '../../services/shared/shared.service';
 import { Title } from '@angular/platform-browser';
+import { LoaderComponent } from "../../../loader/loader.component";
 
 @Component({
-  selector: 'app-web-products',
-  standalone: true,
-  imports: [CommonModule, RouterLink, CustomerCartComponent],
-  templateUrl: './web-products.component.html',
-  styleUrl: './web-products.component.css'
+    selector: 'app-web-products',
+    standalone: true,
+    templateUrl: './web-products.component.html',
+    styleUrl: './web-products.component.css',
+    imports: [CommonModule, RouterLink, CustomerCartComponent, LoaderComponent]
 })
 
 
@@ -21,7 +22,7 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
   productsList:any [] = []
   categoryList:any [] = []
   // cartService: any;
-
+  isLoading: boolean = false;
 
   item: number = 0;
   itemCount: number = 0;
@@ -37,6 +38,11 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
     this.getAllProducts()
     this.getAllCategory() 
     this.titleService.setTitle('Shop');
+
+    // setTimeout(() => {
+    //   this.isLoading = false; // Set to false when loading is complete
+    // }, 5000); // Adjust the delay time as needed
+  
 
     // // Subscribe to cartItems$ to get real-time updates
     // this.cartService.cartItems$.subscribe(cartItems => {
@@ -55,26 +61,47 @@ export class WebProductsComponent implements OnInit { //use OnInit for sharedSer
     this.sharedService.currentItems.subscribe(items => this.item = items);
     this.sharedService.currentTotal.subscribe(items => this.itemCount = items);
     console.log('bbbbbbbbbbb>>>',this.item)
+
+
+    
   }
 
   nevigateToProducts(id:number){
     this.router.navigate(['/products', id])
   }
-  getAllProducts(){
-    this.productSrv.getProducts().subscribe((res:any)=>{
-      // this.productsList = res.data
+  // getAllProducts(){
+  //   this.productSrv.getProducts().subscribe((res:any)=>{
+  //     // this.productsList = res.data
       
-      this.productsList = res.products
-      console.log('-->', this.productsList)
-      console.log('getProducts-->', this.productsList)
-    })
+  //     this.productsList = res.products
+  //     console.log('-->', this.productsList)
+  //     console.log('getProducts-->', this.productsList)
+  //   })
     
+  // }
+  getAllProducts(): void {
+    
+    this.isLoading = true; // Set isLoading to true before fetching data
+    setTimeout(() => {
+    this.productSrv.getProducts().subscribe(
+      (res: any) => {
+        this.productsList = res.products;
+        console.log('getProducts-->', this.productsList);
+        this.isLoading = false; // Set isLoading to false after data is fetched
+      },
+      (error: any) => {
+        console.error('Error fetching products:', error);
+        this.isLoading = false; // Set isLoading to false in case of error
+      }
+    );
+  },0); // Specify the delay in milliseconds
   }
     getAllCategory(){
     this.productSrv.getCategory().subscribe((res:any)=>{
       this.categoryList = res
       console.log('getAllCategory==>',this.categoryList)
     })
+    
     
   }
   

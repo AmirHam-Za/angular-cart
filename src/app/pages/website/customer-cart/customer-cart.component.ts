@@ -16,6 +16,7 @@ import { Title } from '@angular/platform-browser';
 export class CustomerCartComponent implements OnInit {
   // http: any;
   cartItems: any[] = []; 
+  router: any;
 
 submitForm() {
 throw new Error('Method not implemented.');
@@ -82,6 +83,8 @@ throw new Error('Method not implemented.');
     await this.updateItemTotal();
     // await this.updateItemCount();
   }
+
+  
  
 // show data from storage
   getTotalPrice() {
@@ -92,6 +95,17 @@ throw new Error('Method not implemented.');
   }
   getAllCartItems(): string {
     return JSON.stringify(this.cartItems);
+  }
+  
+  count: number = 0;
+  checkOut(): void {
+    // this.increment();
+   let count =  this.count++;
+  // let count = this.count += 5;
+   console.log(count)
+
+       // Redirect to another component
+      //  this.router.navigate(['/todo']);
   }
   
   
@@ -129,4 +143,10 @@ sendCartData() {
     );
 }
 
+
+
 }
+
+
+
+

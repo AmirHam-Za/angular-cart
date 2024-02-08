@@ -24,7 +24,10 @@ export class LandingComponent {
   productsList:any [] = []
   categoryList:any [] = []
   
- constructor(private productSrv: ProductService, private router:Router){}
+ constructor(
+  private productSrv: ProductService, 
+  private router:Router
+  ){}
 
   ngOnInit(): void {
     this.getAllProducts()

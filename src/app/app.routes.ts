@@ -12,6 +12,7 @@ import { CustomerCartComponent } from './pages/website/customer-cart/customer-ca
 import { AuthGuard } from './pages/services/auth/auth.guard';
 import { TodosComponent } from './todos/todos.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
+import { ContactComponent } from './pages/website/contact/contact.component';
 
 
 
@@ -52,6 +53,11 @@ export const routes: Routes = [
                 component:CategoriesComponent,
                 // canActivate: [AuthGuard]
             },
+            {
+                path:'contact',
+                component:ContactComponent,
+                // canActivate: [AuthGuard]
+            },
         ] 
     },
 
@@ -82,11 +88,10 @@ export const routes: Routes = [
         ]
 
     },
-   
-    //     path: '**', 
-    //     component: PageNotFoundComponent 
-    // },
 
-    { path: '**', component: PageNotFoundComponentComponent }
+    { 
+        path: '**',
+        component: PageNotFoundComponentComponent
+    }
 
 ];
