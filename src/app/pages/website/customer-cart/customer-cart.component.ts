@@ -56,7 +56,7 @@ throw new Error('Method not implemented.');
   
   updateItemTotal() {
     this.itemTotal = this.cartSrv.getTotal();
-    this.sharedService.updateItems(this.itemTotal);
+    
   }
  
  deleteCart(item:any){

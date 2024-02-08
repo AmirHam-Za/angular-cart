@@ -22,17 +22,12 @@ export class CartService {
     return this.items
   }
   delete(item: any) {
-    // this.items = this.items.filter((i) => i.productId !== item.productId);
     this.items = this.items.filter((i) => i.id !== item.id);
 
     localStorage.setItem('cartItems', JSON.stringify(this.items))
   }
 
-  totalPricePerItem(product: any): number {
-    const cartItem = this.items.find(item => item.id === product.id);
-    // return cartItem ? cartItem.price * cartItem.quantity : 0;
-    return cartItem.price * cartItem.quantity;
-  }
+
 
   incrementQuantity(id: number) {
     let item = this.items.find((i) => i.id === id)
