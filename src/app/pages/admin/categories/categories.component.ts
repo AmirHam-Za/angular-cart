@@ -13,18 +13,22 @@ import { Title } from '@angular/platform-browser';
 })
 export class CategoriesComponent {
 
-  products$:Observable<any>
-  constructor(private productSrv:ProductService,
+  categoryList$:Observable<any>
+  
+  constructor
+  (
+    private productSrv:ProductService,
     private titleService: Title
-    )
+  )
   {
-    this.products$ = this.productSrv.getCategory().pipe(
+    // fetching categoryusing observable
+    this.categoryList$ = this.productSrv.getCategory().pipe(
       map((item:any)=>
      {
-        // console.log(item.data)
+        // console.log( 'categoryList$---->>>>>', item.data)
         // return item.data
-
-        console.log('category-list--->', item)
+        
+        console.log( 'categoryList$---->>>>>', item)
         return item
       })
     )
