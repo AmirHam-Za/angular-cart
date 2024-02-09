@@ -7,7 +7,6 @@ import { NavComponent } from './nav/nav.component';
 import { LandingComponent } from './pages/website/landing/landing.component';
 import { CustomerCartComponent } from './pages/website/customer-cart/customer-cart.component';
 import { CartService } from './pages/services/cart/cart.service';
-import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 
 @Component({
   selector: 'app-root',

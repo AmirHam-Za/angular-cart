@@ -2,13 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ProductService } from '../../services/product/product.service';
-
-import {
-  Dropdown,
-  Ripple,
-  initTE,
-} from "tw-elements";
-import { WebheaderComponent } from '../webheader/webheader.component';
 import { NavComponent } from "../../../nav/nav.component";
 
 @Component({
@@ -16,7 +9,7 @@ import { NavComponent } from "../../../nav/nav.component";
   standalone: true,
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
-  imports: [CommonModule, RouterLink, WebheaderComponent, RouterOutlet, NavComponent]
+  imports: [CommonModule, RouterLink, RouterOutlet, NavComponent]
 })
 export class LandingComponent {
   productsList: any[] = []
