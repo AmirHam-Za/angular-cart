@@ -5,9 +5,10 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
 import { FormsModule } from '@angular/forms';
 
 import { CartService } from './services/cart/cart.service';
-import { CustomerCartComponent } from './pages/customer-cart/customer-cart.component';
-import { LandingComponent } from './pages/landing/landing.component';
-import { NavComponent } from './components/nav/nav.component';
+import { NavComponent } from './allComponents/nav/nav.component';
+import { LandingComponent } from './allComponents/pages/landing/landing.component';
+import { CustomerCartComponent } from './allComponents/pages/customer-cart/customer-cart.component';
+
 
 
 @Component({

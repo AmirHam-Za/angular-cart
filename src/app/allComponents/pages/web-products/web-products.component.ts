@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { ProductService } from '../../services/product/product.service';
+import { ProductService } from '../../../services/product/product.service';
 import { CustomerCartComponent } from '../customer-cart/customer-cart.component';
-import { CartService } from '../../services/cart/cart.service';
+import { CartService } from '../../../services/cart/cart.service';
 import { Title } from '@angular/platform-browser';
-import { LoaderComponent } from '../../components/loader/loader.component';
+import { LoaderComponent } from '../../loader/loader.component';
 
 @Component({
   selector: 'app-web-products',

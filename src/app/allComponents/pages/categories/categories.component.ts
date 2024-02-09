@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { ProductService } from '../../services/product/product.service';
+import { ProductService } from '../../../services/product/product.service';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { LoaderComponent } from '../../components/loader/loader.component';
+import { LoaderComponent } from '../../loader/loader.component';
 
 @Component({
   selector: 'app-categories',

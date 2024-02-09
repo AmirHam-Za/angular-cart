@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { ProductService } from '../../services/product/product.service';
-import { NavComponent } from '../../components/nav/nav.component';
+import { ProductService } from '../../../services/product/product.service';
+import { NavComponent } from '../../nav/nav.component';
 
 @Component({
   selector: 'app-landing',

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, inject} from '@angular/core';
 import { WebProductsComponent } from '../web-products/web-products.component';
-import { CartService } from '../../services/cart/cart.service';
+import { CartService } from '../../../services/cart/cart.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 

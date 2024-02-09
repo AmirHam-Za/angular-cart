@@ -1,9 +1,10 @@
     import { Routes } from '@angular/router';
-    import { LandingComponent } from './pages/landing/landing.component';
-    import { WebProductsComponent } from './pages/web-products/web-products.component';
-    import { CustomerCartComponent } from './pages/customer-cart/customer-cart.component';
-    import { CategoriesComponent } from './pages/categories/categories.component';
-    import { PageNotFoundComponentComponent } from './components/page-not-found-component/page-not-found-component.component';
+import { LandingComponent } from './allComponents/pages/landing/landing.component';
+import { WebProductsComponent } from './allComponents/pages/web-products/web-products.component';
+import { CustomerCartComponent } from './allComponents/pages/customer-cart/customer-cart.component';
+import { CategoriesComponent } from './allComponents/pages/categories/categories.component';
+import { PageNotFoundComponentComponent } from './allComponents/page-not-found-component/page-not-found-component.component';
+
 
 
 
