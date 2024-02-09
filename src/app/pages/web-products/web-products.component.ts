@@ -5,7 +5,7 @@ import { ProductService } from '../../services/product/product.service';
 import { CustomerCartComponent } from '../customer-cart/customer-cart.component';
 import { CartService } from '../../services/cart/cart.service';
 import { Title } from '@angular/platform-browser';
-import { LoaderComponent } from '../../services/loader/loader.component';
+import { LoaderComponent } from '../../components/loader/loader.component';
 
 @Component({
   selector: 'app-web-products',

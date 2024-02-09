@@ -1,9 +1,10 @@
     import { Routes } from '@angular/router';
-    import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
-import { LandingComponent } from './website/landing/landing.component';
-import { WebProductsComponent } from './website/web-products/web-products.component';
-import { CustomerCartComponent } from './website/customer-cart/customer-cart.component';
-import { CategoriesComponent } from './website/categories/categories.component';
+    import { LandingComponent } from './pages/landing/landing.component';
+    import { WebProductsComponent } from './pages/web-products/web-products.component';
+    import { CustomerCartComponent } from './pages/customer-cart/customer-cart.component';
+    import { CategoriesComponent } from './pages/categories/categories.component';
+    import { PageNotFoundComponentComponent } from './components/page-not-found-component/page-not-found-component.component';
+
 
 
     export const routes: Routes = [
