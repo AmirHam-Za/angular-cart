@@ -1,0 +1,41 @@
+/* CSS */
+/* .loader {
+  border: 8px solid #f3f3f3; 
+  border-top: 8px solid #3498db; 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; 
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} */
+
+
+
+.loader {
+    border: 10px solid transparent; /* Transparent border */
+    border-radius: 50%;
+    width: 100px; /* Increase the width */
+    height: 100px; /* Increase the height */
+    animation: spin 1s linear infinite; /* Apply the spin animation */
+    margin: 0 auto; /* Center the loader */
+    border-image: linear-gradient(45deg, #ff69b4, #8a2be2, #3498db); /* Gradient border */
+    border-image-slice: 1; /* Ensure the gradient is fully visible */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+
+  .loading-text {
+    background: linear-gradient(45deg, #ff69b4, #8a2be2, #3498db);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  

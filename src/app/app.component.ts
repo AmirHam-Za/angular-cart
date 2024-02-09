@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
-import { LandingComponent } from './pages/website/landing/landing.component';
-import { CustomerCartComponent } from './pages/website/customer-cart/customer-cart.component';
-import { CartService } from './pages/services/cart/cart.service';
+import { CustomerCartComponent } from './website/customer-cart/customer-cart.component';
+import { LandingComponent } from './website/landing/landing.component';
+import { CartService } from './services/cart/cart.service';
+
 
 @Component({
   selector: 'app-root',

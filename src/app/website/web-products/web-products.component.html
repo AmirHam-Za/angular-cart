@@ -1,0 +1,85 @@
+<div class="w-full flex">
+  <app-loader *ngIf="isLoading; else loadedContent"></app-loader>
+  <ng-template #loadedContent>
+    <div class="w-full flex">
+      <div class="container mx-auto">
+        <div class="m-1">
+          <div class="bg-blue-200 w-full flex justify-between p-2 rounded-t">
+            <p class="text-xl font-semibold">Product List</p>
+          </div>
+          <div
+            class="w-full flex flex-wrap justify-center bg-gray-100 rounded-b min-h-8"
+          >
+            <div *ngFor="let product of productsList" class="w-3/12">
+              <div class=" ">
+                <div
+                  class="bg-blue-50 p-1 m-1 border rounded shadow flex flex-col"
+                >
+                  <div class="w-full bg-blue-300">
+                    <img
+                      class="border mr-2"
+                      [src]="product.thumbnail"
+                      alt=""
+                      height="200"
+                    />
+                  </div>
+
+                  <div class="flex flex-col text-center">
+                    <h1 class="text-gray-500 font-semibold">
+                      {{ product.title }}
+                    </h1>
+                    <h1 class="text-gray-500 font-semibold">
+                      <i class="fa-regular fa-money-bill-1 text-sm"></i>&nbsp;{{
+                        product.price
+                      }}
+                    </h1>
+                    <h1 class="text-gray-500 font-semibold">
+                      <i class="fa-solid fa-layer-group"></i>&nbsp;
+                      {{ product.category }}
+                    </h1>
+                    <div
+                      *ngIf="cartService.getQuantityInCart(product) === 0"
+                      class="flex justify-center"
+                    >
+                      <a
+                        (click)="addToCart(product)"
+                        class="w-[200px] bg-blue-200 hover:bg-blue-300 transition px-2 border text-gray-600 font-semibold border-purple-300 rounded-xl cursor-pointer"
+                        >Add to cart
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    *ngIf="cartService.isProductInCart(product)"
+                    class="mt-2"
+                  >
+                    <div class="">
+                      <div
+                        class="flex justify-center bg-purple-300 hover:bg-purple-300 transition px-2 border text-gray-600 border-purple-300 cursor-pointer"
+                      >
+                        <a
+                          routerLink="/cart"
+                          routerLinkActive="active-menu-item"
+                          [routerLinkActiveOptions]="{ exact: true }"
+                          class="w-full text-center text-sm rounded"
+                        >
+                          <span class="text-center font-semibold text-sm mr-2"
+                            >Cart Added</span
+                          >
+                          <i class="fa-solid fa-arrow-right mr-2"></i>
+                          <span class="text-red-400"
+                            ><i class="fa-solid fa-cart-shopping"></i
+                          ></span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
