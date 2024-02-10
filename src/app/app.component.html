@@ -1,22 +1,2 @@
 <router-outlet></router-outlet>
 
-<div class="bg-gradient-to-r from-red-100 via-red-200 to-red-300">
-  <div
-    class="fixed text-center px-2 top-1/2 right-4 backdrop-blur-sm bg-white/30 rounded-lg shadow-1-strong shadow-gray-400 pb-2"
-  >
-    <p class="text-lg font-semibold">
-      <i class="fa-regular fa-money-bill-1"></i> {{ cartService.getTotal() }}
-    </p>
-    <p class="text-lg font-semibold">
-      <i class="fa-solid fa-bag-shopping"></i> {{ cartService.getTotalItems() }}
-    </p>
-    <a
-      routerLink="/cart"
-      routerLinkActive="active-menu-item"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="text-xs bg-blue-200 p-1 rounded-xl px-4 text-gray-600 font-semibold"
-      href=""
-      >See Cart</a
-    >
-  </div>
-</div>

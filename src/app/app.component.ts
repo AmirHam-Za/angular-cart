@@ -8,6 +8,7 @@ import { CartService } from './services/cart/cart.service';
 import { NavComponent } from './allComponents/nav/nav.component';
 import { LandingComponent } from './allComponents/pages/landing/landing.component';
 import { CustomerCartComponent } from './allComponents/pages/customer-cart/customer-cart.component';
+import { HomeComponent } from './allComponents/pages/home/home.component';
 
 
 
@@ -24,6 +25,7 @@ import { CustomerCartComponent } from './allComponents/pages/customer-cart/custo
       CustomerCartComponent,
       RouterLinkActive,
       RouterLink,
+      HomeComponent
     ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

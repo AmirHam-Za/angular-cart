@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ProductService } from '../../../services/product/product.service';
 import { NavComponent } from '../../nav/nav.component';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
-  selector: 'app-landing',
-  standalone: true,
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css',
-  imports: [CommonModule, RouterLink, RouterOutlet, NavComponent]
+    selector: 'app-landing',
+    standalone: true,
+    templateUrl: './landing.component.html',
+    styleUrl: './landing.component.css',
+    imports: [CommonModule, RouterLink, RouterOutlet, NavComponent, FooterComponent]
 })
 export class LandingComponent {
   productsList: any[] = []

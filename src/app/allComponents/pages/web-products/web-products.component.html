@@ -1,4 +1,4 @@
-<div class="w-full flex">
+<div class="w-full flex justify-center">
   <app-loader *ngIf="isLoading; else loadedContent"></app-loader>
   <ng-template #loadedContent>
     <div class="w-full flex">
@@ -17,10 +17,11 @@
                 >
                   <div class="w-full bg-blue-300">
                     <img
-                      class="border mr-2"
+                      style="height:200px;"
+                      class="border w-full object-cover mr-2"
                       [src]="product.thumbnail"
                       alt=""
-                      height="200"
+                      
                     />
                   </div>
 

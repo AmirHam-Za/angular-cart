@@ -32,7 +32,8 @@ export class WebProductsComponent implements OnInit {
   product: any;
   showDefault: boolean = true;
 
-  constructor(private productSrv: ProductService,
+  constructor(
+    private productSrv: ProductService,
     private router: Router,
     private titleService: Title
   ) { }

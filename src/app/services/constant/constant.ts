@@ -3,6 +3,7 @@ export const Constant = {
     METHODS: {
         ADD_CART:'carts/add',
         GET_ALL_PRODUCT: 'products',        
+        GET_FEATURED_PRODUCT: 'products?limit=12',        
         GET_ALL_CATEGORY: 'products/categories',
 
     }

@@ -16,6 +16,9 @@ export class ProductService {
   getProducts() {
     return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_ALL_PRODUCT)
   }
+  featuredProducts() {
+    return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_FEATURED_PRODUCT)
+  }
 
   addCart(obj: any) {
     return this.http.post(Constant.API_END_POINT + Constant.METHODS.ADD_CART, obj)
