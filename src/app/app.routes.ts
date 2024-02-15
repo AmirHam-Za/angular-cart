@@ -4,6 +4,7 @@
     import { CustomerCartComponent } from './allComponents/pages/customer-cart/customer-cart.component';
     import { CategoriesComponent } from './allComponents/pages/categories/categories.component';
     import { HomeComponent } from './allComponents/pages/home/home.component';
+import { CategoryProductsComponent } from './allComponents/category-products/category-products.component';
 
     export const routes: Routes = [
         {
@@ -11,6 +12,7 @@
             redirectTo:'home',
             pathMatch:'full'
         },
+
     
         {
             path:'',
@@ -32,6 +34,14 @@
                     path:'home',
                     component:HomeComponent,
                 },
+               
+                { 
+                    // this should be same as the route defined in getCategorySlug() in homeComponent
+                    path: 'products/category/:category', 
+                    component: CategoryProductsComponent 
+                },
+
             ] 
         },
+        
     ];

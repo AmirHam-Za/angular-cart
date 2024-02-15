@@ -26,10 +26,13 @@ export class HomeComponent {
   categoryList: any[] = []
   isLoading: boolean = false;
 
-  item: number = 0;
-  itemCount: number = 0;
-  product: any;
-  showDefault: boolean = true;
+  // item: number = 0;
+  // itemCount: number = 0;
+  // product: any;
+  // showDefault: boolean = true;
+
+  selectedCategory: string | null = null;
+  // productService: any;
   constructor(
     private productSrv: ProductService,
     private router: Router,
@@ -40,6 +43,11 @@ export class HomeComponent {
     this.titleService.setTitle('Home');
     this.getFeaturedProducts()
     this.getAllCategory()
+    // this.getCategory();
+    this.getCategoryProducts();
+  }
+  getCategoryProducts() {
+    throw new Error('Method not implemented.');
   }
  
 
@@ -50,7 +58,7 @@ export class HomeComponent {
       this.productSrv.featuredProducts().subscribe(
         (res: any) => {
           this.productsList = res.products;
-          console.log('getProducts****************-->', this.productsList);
+          console.log('getFeaturedProducts->', this.productsList);
           this.isLoading = false;
         },
         (error: any) => {
@@ -61,24 +69,94 @@ export class HomeComponent {
     }, 0);
   }
 
-  getAllCategory(): void {
-    this.isLoading = true;
-
-    this.productSrv.getCategory().subscribe(
-      (res: any) => {
-        this.categoryList = res;
-        console.log('getAllCategory==>', this.categoryList);
-        this.isLoading = false;
-      },
-      (error: any) => {
-        console.error('Error fetching categories:', error);
-        this.isLoading = false;
-      }
-    );
-  }
+  
+ 
 
   addToCart(product: any) {
     this.cartService.addCart(product)
     console.log('========>cart clicked')
   }
+
+  // getCategory(): void {
+  //   this.isLoading = true;
+  //   this.productService.getCategory().subscribe(
+  //     (res: string[]) => {
+  //       this.categoryList = res;
+  //       console.log('getCategory==>', this.categoryList);
+  //       this.isLoading = false;
+  //     },
+  //     (error: any) => {
+  //       console.error('Error fetching categories:', error);
+  //       this.isLoading = false;
+  //     }
+  //   );
+  // }
+
+
+
+  getAllCategory(): void {
+    this.isLoading = true;
+// fetch all category
+    this.productSrv.getCategory().subscribe(
+      (res: any) => {
+        this.categoryList = res;
+        console.log('getAllCategory==>', this.categoryList);
+        this.isLoading = false;
+
+        for (let i = 0; i < this.categoryList.length; i++) {
+          const category = this.categoryList[i];
+          console.log('getAllCategory>>>',`${i}: ${category}`);
+        }
+      },
+      (error: any) => {
+        console.error('Error fetching categories:', error);
+        this.isLoading = false;
+      }
+
+      
+    );
+  }
+  getCategorySlug(clickedCategory: string): void {
+    // make category clickable
+  this.selectedCategory = clickedCategory;
+  console.log('Clicked category:', this.selectedCategory);
+   
+  // this route should be same as the route defined in app.route.ts
+  const sss = this.router.navigate(['products/category', this.selectedCategory]);
+  console.log('<<<<<>>>>>>>',sss);
 }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
