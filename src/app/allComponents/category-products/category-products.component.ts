@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from "../loader/loader.component";
 import { CartService } from '../../services/cart/cart.service';
+import { AddToCartButtonComponent } from "../addtocart/addtocart.component";
 
 @Component({
     selector: 'app-category-products',
@@ -12,7 +13,7 @@ import { CartService } from '../../services/cart/cart.service';
     styleUrl: './category-products.component.css',
     imports: [CommonModule,
         RouterLink,
-        RouterLinkActive, LoaderComponent]
+        RouterLinkActive, LoaderComponent, AddToCartButtonComponent]
 })
 
 export class CategoryProductsComponent implements OnInit {

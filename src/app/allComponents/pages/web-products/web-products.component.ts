@@ -6,19 +6,20 @@ import { CustomerCartComponent } from '../customer-cart/customer-cart.component'
 import { CartService } from '../../../services/cart/cart.service';
 import { Title } from '@angular/platform-browser';
 import { LoaderComponent } from '../../loader/loader.component';
+import { AddToCartButtonComponent } from "../../addtocart/addtocart.component";
 
 @Component({
-  selector: 'app-web-products',
-  standalone: true,
-  templateUrl: './web-products.component.html',
-  styleUrl: './web-products.component.css',
-  imports:
-    [
-      CommonModule,
-      RouterLink,
-      CustomerCartComponent,
-      LoaderComponent,
-      RouterLinkActive
+    selector: 'app-web-products',
+    standalone: true,
+    templateUrl: './web-products.component.html',
+    styleUrl: './web-products.component.css',
+    imports: [
+        CommonModule,
+        RouterLink,
+        CustomerCartComponent,
+        LoaderComponent,
+        RouterLinkActive,
+        AddToCartButtonComponent
     ]
 })
 export class WebProductsComponent implements OnInit {

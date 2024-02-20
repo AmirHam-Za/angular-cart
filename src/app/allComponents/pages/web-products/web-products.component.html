@@ -42,11 +42,7 @@
                       *ngIf="cartService.getQuantityInCart(product) === 0"
                       class="flex justify-center"
                     >
-                      <a
-                        (click)="addToCart(product)"
-                        class="w-[200px] bg-blue-200 hover:bg-blue-300 transition px-2 border text-gray-600 font-semibold border-purple-300 rounded-xl cursor-pointer"
-                        >Add to cart
-                      </a>
+                      <app-addtocart [product]="product"></app-addtocart>
                     </div>
                   </div>
 

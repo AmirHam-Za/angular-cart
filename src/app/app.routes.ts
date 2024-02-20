@@ -2,9 +2,8 @@
     import { LandingComponent } from './allComponents/pages/landing/landing.component';
     import { WebProductsComponent } from './allComponents/pages/web-products/web-products.component';
     import { CustomerCartComponent } from './allComponents/pages/customer-cart/customer-cart.component';
-    import { CategoriesComponent } from './allComponents/pages/categories/categories.component';
     import { HomeComponent } from './allComponents/pages/home/home.component';
-import { CategoryProductsComponent } from './allComponents/category-products/category-products.component';
+    import { CategoryProductsComponent } from './allComponents/category-products/category-products.component';
 
     export const routes: Routes = [
         {
@@ -26,10 +25,7 @@ import { CategoryProductsComponent } from './allComponents/category-products/cat
                     path:'cart',
                     component:CustomerCartComponent
                 },
-                {
-                    path:'categories',
-                    component:CategoriesComponent,
-                },
+
                 {
                     path:'home',
                     component:HomeComponent,
