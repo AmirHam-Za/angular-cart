@@ -56,28 +56,12 @@ async getAllCategory(): Promise<void> {
   }
 }
 
-
-
-  //   getCategorySlug(clickedCategory: string): void {
-//     // make category clickable
-//   this.selectedCategory = clickedCategory;
-//   console.log('Clicked category:', this.selectedCategory);
-   
-//   // this route should be same as the route defined in app.route.ts
-//   const sss = this.router.navigate(['products/category', this.selectedCategory]);
-//   console.log('<<<<<>>>>>>>',sss);
-// }
-
-// or
-
 navigateToCategory(category: string): void {
   this.selectedCategory = category;
   this.router.navigate(['products/category', category]).then(() => {
     console.log('Navigation complete');
-    // Additional actions after navigation
   }).catch(error => {
     console.error('Navigation error:', error);
-    // Handle navigation error
   });
 }
 }
