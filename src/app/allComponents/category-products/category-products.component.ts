@@ -15,13 +15,11 @@ import { CartService } from '../../services/cart/cart.service';
         RouterLinkActive, LoaderComponent]
 })
 
-
 export class CategoryProductsComponent implements OnInit {
   cartService = inject(CartService)
 isLoading: any;
 
-  
-category: string = 'smartphones'; 
+  category: string = 'smartphones'; 
   products: any[] = [];
 
   constructor(

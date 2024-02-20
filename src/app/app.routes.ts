@@ -36,7 +36,6 @@ import { CategoryProductsComponent } from './allComponents/category-products/cat
                 },
                
                 { 
-                    // this should be same as the route defined in getCategorySlug() in homeComponent
                     path: 'products/category/:category', 
                     component: CategoryProductsComponent 
                 },

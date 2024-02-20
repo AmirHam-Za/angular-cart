@@ -1,0 +1,17 @@
+<div class=" bg-blue-50 p-4 rounded">
+  <div class="">
+    <ul class="grid grid-cols-4  gap-4">
+      <li
+        *ngFor="let category of categoryList; let i = index"
+        class="m-1 p-1"
+      >
+        
+        <span class="cursor-pointer" (click)="navigateToCategory(category)">
+          {{ category }}
+        </span>
+      </li>
+    </ul>
+    
+  </div>
+ 
+</div>
